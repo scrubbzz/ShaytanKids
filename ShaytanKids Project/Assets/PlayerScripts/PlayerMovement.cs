@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public int movementSpeed;
+    public float currentMoveSpeed;
+    public int maxMoveSpeed;
     public bool moveLeft;
     public bool moveRight;
     public int horizontalInput;
 
+    /*public bool shouldSprint;
+    public int sprintSpeed;
+*/
     public int jumpHeight;
     public int jumpCount;
     public bool isGrounded;
     public bool canJump;
+
+    public bool shouldSlide;
+    public int slidingPower;
     public Rigidbody2D thePlayer;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         canJump = true;
         thePlayer = GetComponent<Rigidbody2D>();
 
-        movementSpeed = 20;
+        maxMoveSpeed = 20;
         jumpHeight = 10;
     }
 
@@ -32,12 +39,15 @@ public class PlayerMovement : MonoBehaviour
     {
         ReadInputs();
         Move();
+        //Sprint();
         Jump();
         LimitJump();
+        Slide();
         //FlipPlayer();
     }
     public void ReadInputs()
     {
+        //For moving
         if (Input.GetKey(KeyCode.A))
         {
             moveLeft = true;
@@ -52,16 +62,41 @@ public class PlayerMovement : MonoBehaviour
         {
             horizontalInput = 0;
         }
+        //For sprinting
+      /*  if (Input.GetKey(KeyCode.LeftShift))
+        {
+            shouldSprint = true;
+        }
+        if(shouldSprint && Input.GetKey(KeyCode.LeftShift))
+        {
+            shouldSprint = false;
+        }*/
+       //For sliding
+        if(isGrounded && Input.GetKey(KeyCode.S))
+        {
+            shouldSlide = true;
+        }
+        else
+        {
+            shouldSlide = false;
+        }
 
     }
     public void Move()
     {
         if (moveLeft || moveRight)
         {
-            thePlayer.velocity = new Vector2(horizontalInput * movementSpeed, thePlayer.velocity.y);
+            thePlayer.velocity = new Vector2(horizontalInput * currentMoveSpeed, thePlayer.velocity.y);
         }
 
     }
+   /* public void Sprint()
+    {
+        if(shouldSprint && moveLeft || shouldSprint && moveRight)
+        {
+            thePlayer.velocity = new Vector2(horizontalInput * sprintSpeed, thePlayer.velocity.y);
+        }
+    }*/
     public void Jump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
@@ -81,6 +116,22 @@ public class PlayerMovement : MonoBehaviour
                 canJump = false;
             }
         }
+    }
+    public void Slide()
+    {
+        if (shouldSlide)
+        {
+            currentMoveSpeed -= slidingPower * Time.deltaTime;
+        }
+        else
+        {
+            currentMoveSpeed = maxMoveSpeed;
+        }
+        if(shouldSlide && currentMoveSpeed < 0.001)
+        {
+            currentMoveSpeed = 0;
+        }
+        Debug.Log("Speed is " + currentMoveSpeed);
     }
     public void FlipPlayer()
     {
