@@ -131,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
         {
             currentMoveSpeed = 0;
         }
-        Debug.Log("Speed is " + currentMoveSpeed);
+        //Debug.Log("Speed is " + currentMoveSpeed);
     }
     public void FlipPlayer()
     {
