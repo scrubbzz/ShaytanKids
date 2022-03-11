@@ -12,7 +12,7 @@ public class HealthBarManager : MonoBehaviour
         playerHealth.maxValue = health;
         playerHealth.value = health;
     }
-    public void SetHealth(int health)
+    public void SetHealth(float health)
     {
         playerHealth.value = health;
     }
