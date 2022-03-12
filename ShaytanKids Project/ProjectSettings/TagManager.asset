@@ -8,11 +8,12 @@ TagManager:
   - EnemySpawner
   - Enemy
   - Arrow
+  - SpawnLocation
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Archangel
   - Water
   - UI
   - 

@@ -5,16 +5,18 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject Enemy;
+    public GameObject[] spawnLocations;
     public List<GameObject> enemies;
 
     public float timer;
     public int spawnDelay;
 
-    public Vector2 spawnRange;
+    public int spawnRange;
 
     // Start is called before the first frame update
     void Start()
     {
+        spawnLocations = GameObject.FindGameObjectsWithTag("SpawnLocation");
         enemies = new List<GameObject>();
         //spawnDelay = 3;
               
@@ -25,18 +27,20 @@ public class EnemySpawner : MonoBehaviour
     {
         timer += Time.deltaTime;
         SpawnEnemies();
-        spawnRange = new Vector2(Random.Range(0, 20), 4);
+        spawnRange = Random.Range(0, spawnLocations.Length);
+        //Debug.Log(enemies);
     }
     public void SpawnEnemies()
     {
         if (timer >= spawnDelay)
         {
-            enemies.Add(Instantiate(Enemy, spawnRange, Quaternion.identity));
-            Debug.Log("There are " + enemies.Count + "enemies");
+            enemies.Add(Instantiate(Enemy, spawnLocations[spawnRange].transform.position, Quaternion.identity));
+            //Debug.Log("There are " + enemies.Count + "enemies");
     
             timer = 0;
         }
     }
+    
 
 }
 

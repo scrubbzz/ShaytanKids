@@ -25,7 +25,7 @@ public class EnemyDestroyer : MonoBehaviour
             {
 
                 Destroy(enemySpawner.enemies[i].gameObject);
-                enemySpawner.enemies.RemoveAt(i);
+                enemySpawner.enemies.RemoveAt(i); 
 
             }
         }

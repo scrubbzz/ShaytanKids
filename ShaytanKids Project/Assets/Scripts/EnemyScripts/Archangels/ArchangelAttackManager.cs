@@ -21,13 +21,13 @@ public class ArchangelAttackManager : MonoBehaviour, IAffectPlayer
     public int projectileSpeed;
     public Vector2 spawnOffset;
 
-    // Start is called before the first frame update
+    // Start is called before the first frame update 
     void Start()
     {
         detectorOrigin = this.transform;
     }
 
-    // Update is called once per frame
+    // Update is called once per frame 
     void Update()
     {
         timer += Time.deltaTime;
@@ -37,7 +37,7 @@ public class ArchangelAttackManager : MonoBehaviour, IAffectPlayer
     public void LocatePlayer()
     {
         Collider2D collider = Physics2D.OverlapBox((Vector2)detectorOrigin.position + detectorOriginOffset, detectorSize, 0, detectorLayermask);
-        if(collider != null)
+        if (collider != null)
         {
             Target = collider.gameObject;
             Debug.Log("DetectedPlayer");
@@ -50,20 +50,25 @@ public class ArchangelAttackManager : MonoBehaviour, IAffectPlayer
     public void DamagePlayer()
     {
         directionToTarget = Target.transform.position - detectorOrigin.position;
-      
-        if(timer >= fireDelay)
+
+        if (timer >= fireDelay && Target != null)
         {
-            GameObject theProjectile = Instantiate(projectile, transform.position + transform.TransformDirection(spawnOffset), Quaternion.identity);
+            GameObject theProjectile = Instantiate(projectile, transform.position/* + transform.TransformDirection(spawnOffset)*/, Quaternion.identity);
             Rigidbody2D rb = theProjectile.GetComponent<Rigidbody2D>();
 
-            Vector2 direction = directionToTarget * projectileSpeed; ;
+            Vector2 direction = directionToTarget * projectileSpeed;
             rb.velocity = direction;
             rb.transform.up = direction;
 
             timer = 0;
         }
-      
+        
+
     }
-   
-   
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireCube(transform.position, detectorSize);
+    }
+
 }
