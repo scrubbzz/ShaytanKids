@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Arrow
   - SpawnLocation
+  - Teleporter
   layers:
   - Default
   - TransparentFX

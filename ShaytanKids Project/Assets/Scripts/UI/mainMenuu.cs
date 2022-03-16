@@ -25,5 +25,12 @@ public class mainMenuu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void PlayTutoriallevel()
+    {
+        Debug.Log("start");
+        SceneManager.LoadScene("Tutorial polish");
+
+    }
     
 }
