@@ -10,6 +10,7 @@ TagManager:
   - Arrow
   - SpawnLocation
   - Teleporter
+  - Floatspot
   layers:
   - Default
   - TransparentFX
