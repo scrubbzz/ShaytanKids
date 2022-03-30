@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public bool moveLeft;
     public bool moveRight;
     public int horizontalInput;
+    private Animator anim;
 
     /*public bool shouldSprint;
     public int sprintSpeed;
@@ -22,6 +23,14 @@ public class PlayerMovement : MonoBehaviour
     public int slidingPower;
     public Rigidbody2D thePlayer;
     // Start is called before the first frame update
+
+        [SerializeField] private AudioSource jumpSoundEffect;
+
+    private void Awake()
+    {
+         anim = GetComponent<Animator>();
+    }
+
     void Start()
     {
 
@@ -43,7 +52,9 @@ public class PlayerMovement : MonoBehaviour
         Jump();
         LimitJump();
         Slide();
-        //FlipPlayer();
+        FlipPlayer();
+        anim.SetBool("run", horizontalInput != 0);
+        anim.SetBool("grounded", isGrounded);
     }
     public void ReadInputs()
     {
@@ -103,8 +114,10 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpCount++;
             thePlayer.velocity = new Vector2(thePlayer.velocity.x, jumpHeight);
+            anim.SetTrigger("jump");
             isGrounded = false;
 
+            jumpSoundEffect.Play();
         }
     }
     public void LimitJump()
@@ -137,11 +150,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (horizontalInput > 0)
         {
-            transform.localScale = Vector3.one * 15;
+            transform.localScale = Vector3.one;
         }
-        if (horizontalInput < 0)
+        else if (horizontalInput < 0)
         {
-            transform.localScale = new Vector3(-15, 15, 15);
+            transform.localScale = new Vector3(-1, 1, 1);
         }
     }
    /* private void OnCollisionExit2D(Collision2D collision)
