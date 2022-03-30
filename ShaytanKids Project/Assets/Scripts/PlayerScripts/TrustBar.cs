@@ -13,6 +13,8 @@ public class TrustBar : MonoBehaviour
     public float range;
     public TrustManager TrustManager;
     public GreedManager GreedManager;
+    public bool killKid;
+    public bool saveKid;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -20,7 +22,7 @@ public class TrustBar : MonoBehaviour
         currentGreed = 50;
         TrustManager.SetMaxBar(100);
         GreedManager.SetMaxBar(100);
-        range = 4;
+        
     }
 
  
@@ -29,13 +31,23 @@ public class TrustBar : MonoBehaviour
         distToPlayer = Vector2.Distance(transform.position, player.transform.position);
         if (distToPlayer <= range && Input.GetKeyDown(KeyCode.L))
         {
+            saveKid = true;
             DecreaseGreed(10);
             IncreaseTrust(10);
         }
-        else if (distToPlayer <= range && Input.GetKeyDown(KeyCode.K))
+        else
         {
+            saveKid = false;
+        }
+        if (distToPlayer <= range && Input.GetKeyDown(KeyCode.K))
+        {
+            killKid = true;
             DecreaseTrust(10);
             IncreaseGreed(10);
+        }
+        else
+        {
+            killKid = false;
         }
 
         void IncreaseTrust(int saveKids)
