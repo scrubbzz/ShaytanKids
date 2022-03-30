@@ -62,7 +62,8 @@ public class Lungeability : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        cam = Camera.main;
+        lungeForce = 100;
         notLunging = true;
         rb = GetComponent<Rigidbody2D>();
 

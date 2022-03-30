@@ -10,6 +10,12 @@ public class PlayerAttack : MonoBehaviour
     public int attackRadius;
 
     // Update is called once per frame
+
+    private void Start()
+    {
+        attackDamage = 10;
+        attackRadius = 10;
+    }
     void Update()
     {
         ReadInputs();

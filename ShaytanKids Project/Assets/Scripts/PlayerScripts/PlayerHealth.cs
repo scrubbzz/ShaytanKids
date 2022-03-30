@@ -21,6 +21,8 @@ public class PlayerHealth : MonoBehaviour
         healthBarManager.SetMaxHealth(maxHealth);
 
         currentHealthRegenTimer = healthRegenTimer;
+
+        regenRate = 7;
     }
 
     // Update is called once per frame

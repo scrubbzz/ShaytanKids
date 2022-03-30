@@ -9,22 +9,24 @@ public class TrustBar : MonoBehaviour
     public int maxGreed = 100;
     public int currentGreed;
     public int currentTrust;
-    public Transform player;
+    public GameObject player;
     public float range;
     public TrustManager TrustManager;
     public GreedManager GreedManager;
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         currentTrust = 50;
         currentGreed = 50;
         TrustManager.SetMaxBar(100);
         GreedManager.SetMaxBar(100);
+        range = 4;
     }
 
  
     void Update()
     {
-        distToPlayer = Vector2.Distance(transform.position, player.position);
+        distToPlayer = Vector2.Distance(transform.position, player.transform.position);
         if (distToPlayer <= range && Input.GetKeyDown(KeyCode.L))
         {
             DecreaseGreed(10);
