@@ -9,6 +9,7 @@ public class PlayerShoot : MonoBehaviour
     public int projectileSpeed;
 
     public bool isAiming;
+    public bool shouldShoot;
     public Vector3 spawnOffset;
     // Start is called before the first frame update
     void Start()
@@ -38,12 +39,16 @@ public class PlayerShoot : MonoBehaviour
     {
         if (isAiming && playerAttack.attacking == true)
         {
-            GameObject theArrow = Instantiate(arrow, transform.position + transform.TransformDirection(spawnOffset), this.transform.rotation);
-            Rigidbody2D rb = theArrow.GetComponent<Rigidbody2D>();
-       
-            Vector2 arrowSpeed = transform.TransformDirection(Vector2.up) * projectileSpeed;
-           
-            rb.velocity = arrowSpeed;
+            shouldShoot = true;
+            if (shouldShoot)
+            {
+                GameObject theArrow = Instantiate(arrow, transform.position + transform.TransformDirection(spawnOffset), this.transform.rotation);
+                Rigidbody2D rb = theArrow.GetComponent<Rigidbody2D>();
+
+                Vector2 arrowSpeed = transform.TransformDirection(Vector2.up) * projectileSpeed;
+
+                rb.velocity = arrowSpeed;
+            }
         }
     }
     public void StopMeleeAttacks()
@@ -53,4 +58,5 @@ public class PlayerShoot : MonoBehaviour
             playerAttack.enabled = false;
         }
     }
+   
 }
