@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5246847326604510171}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.71, y: -1.1, z: 0}
+  m_LocalPosition: {x: 1, y: -1.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -92,7 +92,7 @@ Transform:
   m_GameObject: {fileID: 5246847326860246062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 28.45, y: 0.62, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5246847327239932218}
@@ -204,17 +204,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mustPatrol: 0
   rb: {fileID: 5246847326860246063}
-  walkspeed: 200
   range: 7
   timeBtwShots: 0.5
   shootspeed: 30
+  walkspeed: 200
   groundcheckpos: {fileID: 5246847326604510168}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   bodycollider: {fileID: 5246847326860246056}
-  player: {fileID: 0}
   shootPos: {fileID: 5246847325871277621}
+  player: {fileID: 0}
   bullet: {fileID: 1853833823357678310, guid: d586855360eef794192cf9de00bb1329, type: 3}
 --- !u!61 &5246847326860246056
 BoxCollider2D:
@@ -229,7 +229,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.43103886, y: 0}
+  m_Offset: {x: 0.44426727, y: 0.0033035278}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -240,7 +240,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.8620777, y: 2}
+  m_Size: {x: 1.8885345, y: 1.993393}
   m_EdgeRadius: 0
 --- !u!1 &5246847327239932221
 GameObject:
@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 5246847327239932218}
   - component: {fileID: 5246847327239932219}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Enemy gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

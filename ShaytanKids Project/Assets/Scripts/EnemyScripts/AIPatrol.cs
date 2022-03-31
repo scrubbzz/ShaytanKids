@@ -11,14 +11,17 @@ public class AIPatrol : MonoBehaviour
     private bool mustTurn, canShoot;
 
     public Rigidbody2D rb;
-    public float walkspeed, range, timeBtwShots, shootspeed;
+    public float range, timeBtwShots, shootspeed;
+    public float walkspeed = 2;
     public Transform groundcheckpos;
     public LayerMask groundLayer;
     public Collider2D bodycollider;
-    public Transform player, shootPos;
+    public Transform  shootPos;
+    public GameObject player;
     public GameObject bullet;
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         mustPatrol = true;
         canShoot = true;
         
@@ -31,11 +34,11 @@ public class AIPatrol : MonoBehaviour
             Patrol();
         }
 
-        distToPlayer = Vector2.Distance(transform.position, player.position);
+        distToPlayer = Vector2.Distance(transform.position, player.transform.position);
 
         if(distToPlayer <= range)
         {
-            if(player.position.x > transform.position.x && transform.localScale.x < 0 || player.position.x < transform.position.x && transform.localScale.x > 0)
+            if(player.transform.position.x > transform.position.x && transform.localScale.x < 0 || player.transform.position.x < transform.position.x && transform.localScale.x > 0)
             {
                 Flip();
             }

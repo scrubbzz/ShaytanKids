@@ -24,6 +24,7 @@ public class PlayerShoot : MonoBehaviour
         ShootArrow();
         //StopMeleeAttacks();
     }
+
     public void ReadInputs()
     {
         if (Input.GetMouseButton(1))
