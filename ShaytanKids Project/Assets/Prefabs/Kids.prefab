@@ -26,9 +26,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8110521443991904420}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -24.83, y: 0.83, z: 0}
-  m_LocalScale: {x: 3.696875, y: 2.7568123, z: 1}
+  m_LocalScale: {x: 7.421847, y: 5.5345764, z: 2.0076}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -129,6 +129,8 @@ MonoBehaviour:
   currentGreed: 50
   currentTrust: 50
   player: {fileID: 0}
-  range: 4
+  range: 7
   TrustManager: {fileID: 0}
   GreedManager: {fileID: 0}
+  killKid: 0
+  saveKid: 0
