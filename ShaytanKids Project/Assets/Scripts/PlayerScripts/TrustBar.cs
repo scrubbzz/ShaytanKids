@@ -1,39 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class TrustBar : MonoBehaviour
 {
     private float distToPlayer;
     public int maxTrust = 100;
     public int maxGreed = 100;
-    public int currentGreed;
     public int currentTrust;
-    public GameObject player;
+    public int currentGreed;
+    public GameObject Light2DObject;
     public float range;
-    public TrustManager TrustManager;
-    public GreedManager GreedManager;
+    public GameObject TheTrustManager;
+    public GameObject TheGreedManager;
+    public TrustManager trustManager;
+    public GreedManager greedManager;
     public bool killKid;
     public bool saveKid;
+    public int meterChangeAmount;
+    private void Awake()
+    {
+        /*TheTrustManager = GameObject.Find("TrustManager");
+        TheGreedManager = GameObject.Find("GreedManager");*/
+    }
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
+       /* trustManager = TheTrustManager.GetComponent<TrustManager>();
+        greedManager = TheGreedManager.GetComponent<GreedManager>();*/
         currentTrust = 50;
         currentGreed = 50;
-        TrustManager.SetMaxBar(100);
-        GreedManager.SetMaxBar(100);
-        
+       /* trustManager.SetMaxBar(100);
+        greedManager.SetMaxBar(100);*/
+        meterChangeAmount = 10;
     }
 
  
     void Update()
     {
-        distToPlayer = Vector2.Distance(transform.position, player.transform.position);
+        FindRequiredComponents();
+        SetTrustAndGreedMeters();
+        distToPlayer = Vector2.Distance(transform.position, Light2DObject.transform.position);
         if (distToPlayer <= range && Input.GetKeyDown(KeyCode.L))
         {
             saveKid = true;
-            DecreaseGreed(10);
-            IncreaseTrust(10);
+            DecreaseGreed(meterChangeAmount);
+            IncreaseTrust(meterChangeAmount);
         }
         else
         {
@@ -42,55 +56,79 @@ public class TrustBar : MonoBehaviour
         if (distToPlayer <= range && Input.GetKeyDown(KeyCode.K))
         {
             killKid = true;
-            DecreaseTrust(10);
-            IncreaseGreed(10);
+            DecreaseTrust(meterChangeAmount);
+            IncreaseGreed(meterChangeAmount);
         }
         else
         {
             killKid = false;
         }
 
-        void IncreaseTrust(int saveKids)
+    }
+
+    private void FindRequiredComponents()
+    {
+        Light2DObject = GameObject.Find("Light 2D");
+        TheTrustManager = GameObject.Find("TrustMeter");
+        TheGreedManager = GameObject.Find("GreedMeter");
+        trustManager = TheTrustManager.GetComponent<TrustManager>();
+        greedManager = TheGreedManager.GetComponent<GreedManager>();
+    }
+
+    private void SetTrustAndGreedMeters()
+    {
+        if (trustManager && greedManager != null)
         {
-            currentTrust += saveKids;
-            if (currentTrust > maxTrust)
-            {
-                currentTrust = maxTrust;
-            }
-            TrustManager.SetBar(currentTrust);
+            trustManager.SetMaxBar(100);
+            greedManager.SetMaxBar(100);
         }
+    }
 
-        void DecreaseTrust(int saveKids)
+    void IncreaseTrust(int saveKids)
+    {
+        currentTrust += saveKids;
+        if (currentTrust > maxTrust)
         {
-            currentTrust -= saveKids;
-            if (currentTrust < 0)
-            {
-                currentTrust = 0;
-            }
-            TrustManager.SetBar(currentTrust);
+            currentTrust = maxTrust;
         }
+        trustManager.SetBar(currentTrust);
+       
+    }
 
-        void IncreaseGreed(int killKids)
+    void DecreaseTrust(int saveKids)
+    {
+        currentTrust -= saveKids;
+        if (currentTrust < 0)
         {
-            currentGreed += killKids;
-            if(currentGreed > maxGreed)
-            {
-                currentGreed = maxGreed;
-            }
-            GreedManager.SetBar(currentGreed);
+            currentTrust = 0;
         }
+        trustManager.SetBar(currentTrust);
+  
+    }
 
-        void DecreaseGreed(int killKids)
+
+    void IncreaseGreed(int killKids)
+    {
+        currentGreed += killKids;
+        if (currentGreed > maxGreed)
         {
-            currentGreed -= killKids;
-            if(currentGreed < 0)
-            {
-                currentGreed = 0;
-            }
-            GreedManager.SetBar(currentGreed);
-
+            currentGreed = maxGreed;
         }
-
+        greedManager.SetBar(currentGreed);
+        var thePlayerLight = this.Light2DObject.GetComponent<TheLightManager>();
+        thePlayerLight.light.pointLightInnerRadius += thePlayerLight.lightAddAmount;
+        thePlayerLight.light.pointLightOuterRadius += thePlayerLight.lightAddAmount * 2;
+       
+    }
+    void DecreaseGreed(int killKids)
+    {
+        currentGreed -= killKids;
+        if (currentGreed < 0)
+        {
+            currentGreed = 0;
+        }
+        greedManager.SetBar(currentGreed);
 
     }
+
 }

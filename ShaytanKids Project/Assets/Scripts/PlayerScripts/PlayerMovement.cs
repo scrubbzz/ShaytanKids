@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
         if(isGrounded && Input.GetKey(KeyCode.S))
         {
             shouldSlide = true;
-        }
+        } 
         else
         {
             shouldSlide = false;

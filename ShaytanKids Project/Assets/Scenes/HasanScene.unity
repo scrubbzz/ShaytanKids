@@ -438,17 +438,6 @@ MonoBehaviour:
   mousePosInWorldSpace: {x: 0, y: 0, z: 0}
   camera: {fileID: 0}
   direction: {x: 0, y: 0}
---- !u!114 &141288573 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8110521443991904421, guid: 1e51256743b195945a1c59e158ee4660, type: 3}
-  m_PrefabInstance: {fileID: 199710665}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bd96698e8b50804faea44af3d8d90c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &170917378 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8715838316964381003, guid: 934cbb14a28575f4b8bb24ed20d0eeae, type: 3}
@@ -645,7 +634,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -757,11 +746,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8110521443991904416, guid: 1e51256743b195945a1c59e158ee4660, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8110521443991904416, guid: 1e51256743b195945a1c59e158ee4660, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.6853113
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8110521443991904416, guid: 1e51256743b195945a1c59e158ee4660, type: 3}
       propertyPath: m_LocalPosition.y
@@ -803,18 +792,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kids
       objectReference: {fileID: 0}
-    - target: {fileID: 8110521443991904421, guid: 1e51256743b195945a1c59e158ee4660, type: 3}
-      propertyPath: range
-      value: 20
+    - target: {fileID: 8110521443991904420, guid: 1e51256743b195945a1c59e158ee4660, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8110521443991904421, guid: 1e51256743b195945a1c59e158ee4660, type: 3}
-      propertyPath: GreedManager
+      propertyPath: playerLight
       value: 
-      objectReference: {fileID: 1261193929}
-    - target: {fileID: 8110521443991904421, guid: 1e51256743b195945a1c59e158ee4660, type: 3}
-      propertyPath: TrustManager
-      value: 
-      objectReference: {fileID: 170917383}
+      objectReference: {fileID: 914216341}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e51256743b195945a1c59e158ee4660, type: 3}
 --- !u!1 &211406372
@@ -833,7 +818,7 @@ GameObject:
   - component: {fileID: 211406378}
   - component: {fileID: 211406379}
   m_Layer: 3
-  m_Name: Player
+  m_Name: TestPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -906,7 +891,7 @@ Transform:
   - {fileID: 128504845}
   - {fileID: 914216340}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &211406375
 Rigidbody2D:
@@ -1585,7 +1570,6 @@ GameObject:
   - component: {fileID: 858337708}
   - component: {fileID: 858337707}
   - component: {fileID: 858337709}
-  - component: {fileID: 858337710}
   m_Layer: 3
   m_Name: Bow
   m_TagString: Untagged
@@ -1694,18 +1678,6 @@ MonoBehaviour:
   mousePosInWorldSpace: {x: 0, y: 0, z: 0}
   camera: {fileID: 0}
   direction: {x: 0, y: 0}
---- !u!114 &858337710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 858337705}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dd4f96f6396b56428072cbee7070bce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &882081839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1715,7 +1687,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4756443154841981621, guid: 4962cda1a66b1e54ea3cd2d376f77c8c, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4756443154841981621, guid: 4962cda1a66b1e54ea3cd2d376f77c8c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1890,8 +1862,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f21938c286443d40965b587b0161c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightLossAmount: 0.25
-  trustBar: {fileID: 141288573}
+  ppp: {fileID: 0}
+  lightLossAmount: 1
+  lightAddAmount: 4
+  theEnemySpawner: {fileID: 2058932358}
+  enemySpawner: {fileID: 2058932359}
+  trustBar: {fileID: 0}
 --- !u!1001 &962149749
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2482,7 +2458,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1148641727
 GameObject:
@@ -2570,7 +2546,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1148641731
 Rigidbody2D:
@@ -2731,7 +2707,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1248346709
 PrefabInstance:
@@ -2814,7 +2790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1261193929
+--- !u!114 &1261193933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2974,7 +2950,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1466950913
 PrefabInstance:
@@ -3050,7 +3026,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3932502968304976889, guid: 68244cb24ad3a52418e34892b7e2e7b1, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3932502968304976889, guid: 68244cb24ad3a52418e34892b7e2e7b1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3547,7 +3523,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1768906271
 GameObject:
@@ -3927,7 +3903,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1963245492
 PrefabInstance:
@@ -4075,7 +4051,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2058932359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4088,9 +4064,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d52af449b0b8714da5a2e8f246383e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 8593700851802993615, guid: e1c21792203f27443b04b98dca888141, type: 3}
+  bizzaro: {fileID: 0}
+  shaytanKid: {fileID: 8110521443991904420, guid: 1e51256743b195945a1c59e158ee4660, type: 3}
+  archangel: {fileID: 0}
   spawnLocations: []
   enemies: []
+  shaytanKids: []
   timer: 0
   spawnDelay: 3
   spawnRange: 0
@@ -4114,7 +4093,7 @@ Transform:
   - {fileID: 644704828}
   - {fileID: 840917650}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2065191809
 PrefabInstance:
@@ -4336,7 +4315,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8715838315841384985, guid: 934cbb14a28575f4b8bb24ed20d0eeae, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8715838315841384985, guid: 934cbb14a28575f4b8bb24ed20d0eeae, type: 3}
       propertyPath: m_AnchorMax.x
