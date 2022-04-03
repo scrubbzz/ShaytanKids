@@ -14,19 +14,27 @@ public class EnemyHealthManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        DestroyEnemy();
     }
     public void TakeDamage(int playerAttackDamage)
     {
         health -= playerAttackDamage;
         Debug.Log(health);
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.gameObject.tag == ("Arrow"))
+        if (collision.gameObject.tag == ("Arrow"))
         {
             health -= 33;
-            Destroy(other.gameObject);
+            Destroy(collision.gameObject);
+        }
+    }
+    public void DestroyEnemy()
+    {
+        if(health <= 0)
+        {
+            Destroy(this.gameObject);
         }
     }
 

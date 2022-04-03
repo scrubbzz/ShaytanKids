@@ -7,6 +7,7 @@ public class AimingRotation : MonoBehaviour
     public PlayerShoot playerShoot;
     public Vector3 mousePosInWorldSpace;
     public Camera camera;
+    public Vector2 direction;
    
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class AimingRotation : MonoBehaviour
     }
     public void RotatePlayer()
     {
-        Vector2 direction = new Vector2(mousePosInWorldSpace.x - transform.position.x, mousePosInWorldSpace.y - transform.position.y);
+         direction = new Vector2(mousePosInWorldSpace.x - transform.position.x, mousePosInWorldSpace.y - transform.position.y);
         transform.up = direction;
     }
 }
