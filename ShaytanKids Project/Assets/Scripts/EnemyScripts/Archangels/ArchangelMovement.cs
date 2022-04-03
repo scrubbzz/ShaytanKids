@@ -83,7 +83,7 @@ public class ArchangelMovement : MonoBehaviour
             }
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             rb.position = Vector2.MoveTowards(rb.position, flightPositions[index], movementSpeed * Time.deltaTime);
-            Debug.Log(changePosTimer);
+          //  Debug.Log(changePosTimer);
         }
     }
     private void OnDrawGizmos()
