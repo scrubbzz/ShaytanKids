@@ -4,6 +4,7 @@ using UnityEngine;
 
 // this class stores a position for the player to spawn in (set by Checkpoint objects), 
 // and has a function to spawn the player there (which should be called when the player dies). 
+<<<<<<< HEAD
 /// <summary>
 /// Handles player respawning and saves the last active checkpoint. There should only be one manager in the scene.
 /// </summary>
@@ -26,12 +27,35 @@ public class CheckpointManager : MonoBehaviour
 
         player = GameObject.FindGameObjectWithTag("Player");
         defaultSpawnpoint = player.transform.position;
+=======
+public class CheckpointManager : MonoBehaviour
+{
+    public CheckpointManager manager;
+    static GameObject player;
+
+    public static Vector2 playerSpawnPosition;
+    static Vector2 defaultSpawnpoint;
+
+    private void Awake()
+    {
+        if (manager == null)
+            manager = this;
+        else
+            Destroy(this);
+
+        // gets reference to the player position. 
+        player = GameObject.FindGameObjectWithTag("Player");
+>>>>>>> main
     }
 
     public static void Respawn()
     {
         if (playerSpawnPosition == null) // just to make sure a spawn point exists 
+<<<<<<< HEAD
              playerSpawnPosition = defaultSpawnpoint; 
+=======
+            playerSpawnPosition = defaultSpawnpoint;
+>>>>>>> main
 
         player.transform.position = playerSpawnPosition;
         Debug.Log("Player respawned at " + playerSpawnPosition + "."); 

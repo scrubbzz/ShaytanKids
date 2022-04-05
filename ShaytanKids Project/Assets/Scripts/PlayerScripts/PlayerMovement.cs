@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public bool moveLeft;
     public bool moveRight;
     public int horizontalInput;
+    private Animator anim;
 
     /*public bool shouldSprint;
     public int sprintSpeed;
@@ -17,11 +18,20 @@ public class PlayerMovement : MonoBehaviour
     public int jumpCount;
     public bool isGrounded;
     public bool canJump;
+    public bool isFalling;
 
     public bool shouldSlide;
     public int slidingPower;
     public Rigidbody2D thePlayer;
     // Start is called before the first frame update
+
+        [SerializeField] private AudioSource jumpSoundEffect;
+
+    private void Awake()
+    {
+         anim = GetComponent<Animator>();
+    }
+
     void Start()
     {
 
@@ -41,9 +51,13 @@ public class PlayerMovement : MonoBehaviour
         Move();
         //Sprint();
         Jump();
+        CheckIfFalling();
         LimitJump();
         Slide();
-        //FlipPlayer();
+        FlipPlayer();
+        anim.SetBool("run", horizontalInput != 0);
+        anim.SetBool("grounded", isGrounded);
+        anim.SetBool("Fall", isFalling);
     }
     public void ReadInputs()
     {
@@ -75,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
         if(isGrounded && Input.GetKey(KeyCode.S))
         {
             shouldSlide = true;
-        }
+        } 
         else
         {
             shouldSlide = false;
@@ -103,10 +117,13 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpCount++;
             thePlayer.velocity = new Vector2(thePlayer.velocity.x, jumpHeight);
+            anim.SetTrigger("jump");
             isGrounded = false;
 
+            jumpSoundEffect.Play();
         }
     }
+
     public void LimitJump()
     {
         if (isGrounded == false)
@@ -137,20 +154,34 @@ public class PlayerMovement : MonoBehaviour
     {
         if (horizontalInput > 0)
         {
-            transform.localScale = Vector3.one * 15;
+            transform.localScale = Vector3.one;
         }
-        if (horizontalInput < 0)
+        else if (horizontalInput < 0)
         {
-            transform.localScale = new Vector3(-15, 15, 15);
+            transform.localScale = new Vector3(-1, 1, 1);
         }
     }
-   /* private void OnCollisionExit2D(Collision2D collision)
+        public void CheckIfFalling()
     {
-        if (collision.gameObject.tag == "Ground")
+        if (thePlayer.velocity.y < 0)
         {
-            jumpCount = 1;
+            isFalling = true;
         }
-    }*/
+
+        else  
+        {
+            isFalling = false;
+         
+        }
+
+    }
+    /* private void OnCollisionExit2D(Collision2D collision)
+     {
+         if (collision.gameObject.tag == "Ground")
+         {
+             jumpCount = 1;
+         }
+     }*/
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")

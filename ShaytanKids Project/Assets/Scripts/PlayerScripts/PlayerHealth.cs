@@ -21,6 +21,8 @@ public class PlayerHealth : MonoBehaviour
         //healthBarManager.SetMaxHealth(maxHealth);
 
         currentHealthRegenTimer = healthRegenTimer;
+
+        regenRate = 7;
     }
 
     void Update()
@@ -75,5 +77,6 @@ public class PlayerHealth : MonoBehaviour
                 tookDamage = false;
             }
         }
+        
     }
 }

@@ -24,6 +24,7 @@ public class ArchangelAttackManager : MonoBehaviour, IAffectPlayer
     // Start is called before the first frame update 
     void Start()
     {
+        
         detectorOrigin = this.transform;
     }
 

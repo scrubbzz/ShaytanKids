@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ArchangelMovement : MonoBehaviour
 {
-    public int movementSpeed;
+    public float movementSpeed;
     public GameObject Target;
     public float distanceToPlayer;
     public ArchangelAttackManager archangelAttackManager;
@@ -70,6 +70,7 @@ public class ArchangelMovement : MonoBehaviour
         {
             toggle = false;
         }
+
     }
     public void FlyRandomly(bool Toggle)
     {
@@ -83,7 +84,8 @@ public class ArchangelMovement : MonoBehaviour
             }
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
             rb.position = Vector2.MoveTowards(rb.position, flightPositions[index], movementSpeed * Time.deltaTime);
-            Debug.Log(changePosTimer);
+          //  Debug.Log(changePosTimer);
+            //Debug.Log(changePosTimer);
         }
     }
     private void OnDrawGizmos()
