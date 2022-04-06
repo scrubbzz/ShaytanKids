@@ -11,6 +11,9 @@ TagManager:
   - SpawnLocation
   - Teleporter
   - Floatspot
+  - ShaytanKid
+  - EnemyArrow
+  - Archangel
   layers:
   - Default
   - TransparentFX

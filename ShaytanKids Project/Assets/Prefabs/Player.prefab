@@ -130,6 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4756443153862871303}
   - component: {fileID: 4756443153862871302}
+  - component: {fileID: 767524683}
   m_Layer: 3
   m_Name: Light 2D
   m_TagString: Untagged
@@ -218,8 +219,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 11.8
-  m_PointLightOuterRadius: 76.5
+  m_PointLightInnerRadius: 15
+  m_PointLightOuterRadius: 30
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -230,6 +231,24 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &767524683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756443153862871296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f21938c286443d40965b587b0161c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light: {fileID: 0}
+  lightLossAmount: 1
+  lightAddAmount: 4
+  theEnemySpawner: {fileID: 0}
+  enemySpawner: {fileID: 0}
+  trustBar: {fileID: 0}
 --- !u!1 &4756443154687772831
 GameObject:
   m_ObjectHideFlags: 0

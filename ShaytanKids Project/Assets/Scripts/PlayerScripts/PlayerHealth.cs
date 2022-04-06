@@ -28,12 +28,12 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+       /* if (Input.GetKeyDown(KeyCode.Z))
         {
             TakeDamage(20);
             tookDamage = true;
             currentHealthRegenTimer = healthRegenTimer;
-        }
+        }*/
         StartRegenTimer();
         RegenerateHealth();
         healthBarManager.playerHealth.value = currentHealth;
@@ -68,5 +68,14 @@ public class PlayerHealth : MonoBehaviour
             }
         }
         
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "EnemyArrow")
+        {
+            TakeDamage(10);
+            tookDamage = true;
+            currentHealthRegenTimer = healthRegenTimer;
+        }
     }
 }
