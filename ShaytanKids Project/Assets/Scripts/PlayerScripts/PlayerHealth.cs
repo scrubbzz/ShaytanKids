@@ -27,12 +27,12 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+       /* if (Input.GetKeyDown(KeyCode.Z))
         {
             TakeDamage(20);
             tookDamage = true;
             currentHealthRegenTimer = healthRegenTimer;
-        }
+        }*/
         StartRegenTimer();
         RegenerateHealth();
 
@@ -78,5 +78,14 @@ public class PlayerHealth : MonoBehaviour
             }
         }
         
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "EnemyArrow")
+        {
+            TakeDamage(10);
+            tookDamage = true;
+            currentHealthRegenTimer = healthRegenTimer;
+        }
     }
 }

@@ -17,6 +17,7 @@ public class TheLightManager : MonoBehaviour
     void Start()
     {
         light = GetComponent<Light2D>();
+        theEnemySpawner = GameObject.Find("EnemySpawner");
         enemySpawner = theEnemySpawner.GetComponent<EnemySpawner>();
     }
    
