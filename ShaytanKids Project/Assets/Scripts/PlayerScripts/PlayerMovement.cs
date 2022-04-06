@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public int jumpCount;
     public bool isGrounded;
     public bool canJump;
+    public bool isFalling;
 
     public bool shouldSlide;
     public int slidingPower;
@@ -50,11 +51,13 @@ public class PlayerMovement : MonoBehaviour
         Move();
         //Sprint();
         Jump();
+        CheckIfFalling();
         LimitJump();
         Slide();
         FlipPlayer();
         anim.SetBool("run", horizontalInput != 0);
         anim.SetBool("grounded", isGrounded);
+        anim.SetBool("Fall", isFalling);
     }
     public void ReadInputs()
     {
@@ -120,6 +123,7 @@ public class PlayerMovement : MonoBehaviour
             jumpSoundEffect.Play();
         }
     }
+
     public void LimitJump()
     {
         if (isGrounded == false)
@@ -157,13 +161,27 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
     }
-   /* private void OnCollisionExit2D(Collision2D collision)
+        public void CheckIfFalling()
     {
-        if (collision.gameObject.tag == "Ground")
+        if (thePlayer.velocity.y < 0)
         {
-            jumpCount = 1;
+            isFalling = true;
         }
-    }*/
+
+        else  
+        {
+            isFalling = false;
+         
+        }
+
+    }
+    /* private void OnCollisionExit2D(Collision2D collision)
+     {
+         if (collision.gameObject.tag == "Ground")
+         {
+             jumpCount = 1;
+         }
+     }*/
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
