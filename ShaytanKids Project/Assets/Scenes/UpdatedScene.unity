@@ -437,6 +437,7 @@ MonoBehaviour:
   playerShoot: {fileID: 0}
   mousePosInWorldSpace: {x: 0, y: 0, z: 0}
   camera: {fileID: 0}
+  direction: {x: 0, y: 0}
 --- !u!1 &133263856
 GameObject:
   m_ObjectHideFlags: 0
@@ -1135,6 +1136,7 @@ MonoBehaviour:
   jumpCount: 0
   isGrounded: 0
   canJump: 0
+  isFalling: 0
   shouldSlide: 0
   slidingPower: 0
   thePlayer: {fileID: 0}
@@ -1155,6 +1157,7 @@ MonoBehaviour:
   attackDamage: 10
   attacking: 0
   attackRadius: 10
+  animator: {fileID: 211406382}
 --- !u!114 &211406379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3355,6 +3358,7 @@ MonoBehaviour:
   arrow: {fileID: 4623151786229393647, guid: ac7477c96146e3a4c953383d96e3db49, type: 3}
   projectileSpeed: 20
   isAiming: 0
+  shouldShoot: 0
   spawnOffset: {x: 0, y: 2, z: 0}
 --- !u!212 &858337708
 SpriteRenderer:
@@ -3423,6 +3427,7 @@ MonoBehaviour:
   playerShoot: {fileID: 0}
   mousePosInWorldSpace: {x: 0, y: 0, z: 0}
   camera: {fileID: 0}
+  direction: {x: 0, y: 0}
 --- !u!1 &898188735
 GameObject:
   m_ObjectHideFlags: 0
@@ -9962,9 +9967,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d52af449b0b8714da5a2e8f246383e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 8593700851802993615, guid: e1c21792203f27443b04b98dca888141, type: 3}
+  bizzaro: {fileID: 0}
+  shaytanKid: {fileID: 0}
+  archangel: {fileID: 0}
   spawnLocations: []
   enemies: []
+  shaytanKids: []
   timer: 0
   spawnDelay: 3
   spawnRange: 0
