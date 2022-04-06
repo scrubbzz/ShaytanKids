@@ -4,13 +4,23 @@ using UnityEngine;
 
 public class GreenPotionCollectible : ItemGeneric
 {
-    public override void PickUp(ItemCounter player)
+    // code for having potions slow fall.
+    Rigidbody2D rb;
+    [SerializeField] float fallSpeed;
+    private void OnEnable()
     {
-        player.potionCount++;
+        rb = GetComponent<Rigidbody2D>();
+        rb.velocity = new Vector2(0, fallSpeed);
+    }
+
+
+    public override void PickUp() 
+    {
+        ItemCounter.potionCount++;
+        ItemCounter.playerItemCounter.UpdateUI();
 
         Debug.Log("Picked up a potion.");
-        // (call the ItemCounter's UI update function here)
 
-        base.PickUp(player); // plays animation, destroys the object.
+        base.PickUp(); // plays animation, destroys the object.
     }
 }

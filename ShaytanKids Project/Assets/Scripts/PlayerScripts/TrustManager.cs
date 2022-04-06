@@ -16,4 +16,5 @@ public class TrustManager : MonoBehaviour
     {
         slider.value = bar;
     }
+    
 }

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class GateKeyCollectible : ItemGeneric
 {
-    public override void PickUp(ItemCounter player)
+    public override void PickUp()
     {
-        player.gateKeyCount++;
-        
-        Debug.Log("Picked up a key.");
-        // (call the ItemCounter's UI update function here)
+        ItemCounter.gateKeyCount++;
+        ItemCounter.playerItemCounter.UpdateUI();
 
-        base.PickUp(player); // plays animation, destroys the object.
+        Debug.Log("Picked up a key.");
+
+        base.PickUp(); // plays animation, destroys the object.
     }
 }

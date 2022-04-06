@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArchangelAttackManager : MonoBehaviour, IAffectPlayer
+public class ArchangelAttackManager : MonoBehaviour
 {
     public int projectileDamage;
 
@@ -38,7 +38,7 @@ public class ArchangelAttackManager : MonoBehaviour, IAffectPlayer
     public void LocatePlayer()
     {
         Collider2D collider = Physics2D.OverlapBox((Vector2)detectorOrigin.position + detectorOriginOffset, detectorSize, 0, detectorLayermask);
-        if (collider != null)
+        if (collider != null && collider.gameObject.tag == "Player")
         {
             Target = collider.gameObject;
             Debug.Log("DetectedPlayer");
@@ -50,11 +50,15 @@ public class ArchangelAttackManager : MonoBehaviour, IAffectPlayer
     }
     public void DamagePlayer()
     {
-        directionToTarget = Target.transform.position - detectorOrigin.position;
-
-        if (timer >= fireDelay && Target != null)
+        if(Target != null)
         {
-            GameObject theProjectile = Instantiate(projectile, transform.position/* + transform.TransformDirection(spawnOffset)*/, Quaternion.identity);
+            directionToTarget = Target.transform.position - detectorOrigin.position;
+        }
+        
+
+        if (Target != null && timer >= fireDelay)
+        {
+            GameObject theProjectile = Instantiate(projectile, (Vector2)transform.position + directionToTarget.normalized, /*+ spawnOffset,*/ Quaternion.identity);
             Rigidbody2D rb = theProjectile.GetComponent<Rigidbody2D>();
 
             Vector2 direction = directionToTarget * projectileSpeed;
@@ -62,6 +66,7 @@ public class ArchangelAttackManager : MonoBehaviour, IAffectPlayer
             rb.transform.up = direction;
 
             timer = 0;
+            Debug.Log("The player is here");
         }
         
 

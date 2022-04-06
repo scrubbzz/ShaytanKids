@@ -13,36 +13,46 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealthRegenTimer;
     public bool tookDamage;
     public int regenRate;
-    // Start is called before the first frame update
+    
     void Start()
     {
         maxHealth = 100;
         currentHealth = maxHealth;
-        healthBarManager.SetMaxHealth(maxHealth);
+        //healthBarManager.SetMaxHealth(maxHealth);
 
         currentHealthRegenTimer = healthRegenTimer;
 
         regenRate = 7;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
+       /* if (Input.GetKeyDown(KeyCode.Z))
         {
             TakeDamage(20);
             tookDamage = true;
             currentHealthRegenTimer = healthRegenTimer;
-        }
+        }*/
         StartRegenTimer();
         RegenerateHealth();
-        healthBarManager.playerHealth.value = currentHealth;
+
+        if (currentHealth <= 0)
+        {
+            // death animation 
+            CheckpointManager.Respawn();
+            // respawn animation 
+            currentHealth = maxHealth;
+        }
+
+        //healthBarManager.playerHealth.value = currentHealth;
     }
+
     private void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        healthBarManager.SetHealth(currentHealth);
+        //healthBarManager.SetHealth(currentHealth);
     }
+
     public void StartRegenTimer()
     {
         if (tookDamage)
@@ -68,5 +78,14 @@ public class PlayerHealth : MonoBehaviour
             }
         }
         
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "EnemyArrow")
+        {
+            TakeDamage(10);
+            tookDamage = true;
+            currentHealthRegenTimer = healthRegenTimer;
+        }
     }
 }
