@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3180186164146579226}
   - component: {fileID: 3180186164146579229}
   m_Layer: 0
-  m_Name: Test Item
+  m_Name: Gate Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.23113209, g: 1, b: 0.26949608, a: 1}
+  m_Sprite: {fileID: 2747690628134850419, guid: a9716c16a44a94eed9b5c90fbf4d9bdd, type: 3}
+  m_Color: {r: 0.6320754, g: 0.5697075, b: 0.020870427, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
