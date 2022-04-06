@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     public int attackDamage;
     public bool attacking;
     public int attackRadius;
+    public Animator animator;
 
     // Update is called once per frame
 
@@ -30,6 +31,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             attacking = true;
+            animator.SetTrigger("Attack");
         }
         else
         {
