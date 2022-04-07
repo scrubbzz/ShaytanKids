@@ -8,7 +8,7 @@ public class AimingRotation : MonoBehaviour
     public Vector3 mousePosInWorldSpace;
     public Camera camera;
     public Vector2 direction;
-   
+    public bool isAiming;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,14 +18,34 @@ public class AimingRotation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HandleInputs();
-        RotatePlayer();
+        ReadInputs();
+        ReadyBow();
+        RotateBow();
     }
-    public void HandleInputs()
+    public void ReadInputs()
     {
         mousePosInWorldSpace = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (Input.GetMouseButton(1))
+        {
+            isAiming = true;
+        }
+        else
+        {
+            isAiming = false;
+        }
     }
-    public void RotatePlayer()
+    public void ReadyBow()
+    {
+        if (isAiming)
+        {
+            this.transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else
+        {
+            this.transform.GetChild(0).gameObject.SetActive(false);
+        }
+    }
+    public void RotateBow()
     {
          direction = new Vector2(mousePosInWorldSpace.x - transform.position.x, mousePosInWorldSpace.y - transform.position.y);
         transform.up = direction;

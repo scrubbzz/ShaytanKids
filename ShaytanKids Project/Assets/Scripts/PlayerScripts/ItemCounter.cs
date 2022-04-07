@@ -35,7 +35,7 @@ public class ItemCounter : MonoBehaviour
     {
         onscreenKeyNumber.text = "" + gateKeyCount;
         onscreenPotionNumber.text = "" + potionCount;
-        Debug.Log("UI updated.");
+        //Debug.Log("UI updated.");
     }
 
 }

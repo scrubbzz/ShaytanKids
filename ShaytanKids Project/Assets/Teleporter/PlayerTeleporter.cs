@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; 
 
 public class PlayerTeleporter : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class PlayerTeleporter : MonoBehaviour
         if (collision.CompareTag("Teleporter"))
         {
             currentTeleporter = collision.gameObject;
+        }
+        if(collision.gameObject.name == "SceneSwitchPortal")
+        {
+            SceneManager.GetSceneByName("Level 1");
         }
         
     }
