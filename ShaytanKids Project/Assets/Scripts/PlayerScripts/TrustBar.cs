@@ -130,5 +130,9 @@ public class TrustBar : MonoBehaviour
         greedManager.SetBar(currentGreed);
 
     }
-
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, range);
+    }
 }

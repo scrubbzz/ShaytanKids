@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class TrustManager : MonoBehaviour
 {
     public Slider slider;
-
+    private void Start()
+    {
+        slider = this.GetComponent<Slider>();
+    }
     public void SetMaxBar(int bar)
     {
         slider.maxValue = bar;

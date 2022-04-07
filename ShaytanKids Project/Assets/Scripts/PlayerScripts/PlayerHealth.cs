@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth;
     public int maxHealth;
 
+    public GameObject healthBar;
     public HealthBarManager healthBarManager;
 
     public int healthRegenTimer = 3;
@@ -16,9 +17,11 @@ public class PlayerHealth : MonoBehaviour
     
     void Start()
     {
+        healthBar = GameObject.Find("HealthBar");
+        healthBarManager = healthBar.GetComponent<HealthBarManager>();
         maxHealth = 100;
         currentHealth = maxHealth;
-        //healthBarManager.SetMaxHealth(maxHealth);
+        healthBarManager.SetMaxHealth(maxHealth);
 
         currentHealthRegenTimer = healthRegenTimer;
 
@@ -27,7 +30,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
-       /* if (Input.GetKeyDown(KeyCode.Z))
+        /*if (Input.GetKeyDown(KeyCode.Z))
         {
             TakeDamage(20);
             tookDamage = true;
@@ -35,7 +38,6 @@ public class PlayerHealth : MonoBehaviour
         }*/
         StartRegenTimer();
         RegenerateHealth();
-
         if (currentHealth <= 0)
         {
             // death animation 
@@ -44,13 +46,13 @@ public class PlayerHealth : MonoBehaviour
             currentHealth = maxHealth;
         }
 
-        //healthBarManager.playerHealth.value = currentHealth;
+        healthBarManager.playerHealth.value = currentHealth;
     }
 
     private void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        //healthBarManager.SetHealth(currentHealth);
+        healthBarManager.SetHealth(currentHealth);
     }
 
     public void StartRegenTimer()
@@ -86,6 +88,7 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(10);
             tookDamage = true;
             currentHealthRegenTimer = healthRegenTimer;
+            Debug.Log("you got shot");
         }
     }
 }
