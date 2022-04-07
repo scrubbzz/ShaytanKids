@@ -220,8 +220,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 15
-  m_PointLightOuterRadius: 30
+  m_PointLightInnerRadius: 30
+  m_PointLightOuterRadius: 60
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -239,13 +239,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4756443153862871296}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f21938c286443d40965b587b0161c96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   light: {fileID: 0}
-  lightLossAmount: 1
+  lightLossAmount: 0.35
   lightAddAmount: 4
   theEnemySpawner: {fileID: 0}
   enemySpawner: {fileID: 0}
@@ -355,7 +355,7 @@ Transform:
   m_GameObject: {fileID: 4756443154841981623}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 16.79, y: 2.72, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7904055, y: 0.9484865, z: 0.31616217}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4756443154687772830}
@@ -456,7 +456,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.25
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -486,7 +486,7 @@ MonoBehaviour:
   isFalling: 0
   shouldSlide: 0
   slidingPower: 0
-  thePlayer: {fileID: 0}
+  thePlayer: {fileID: 4756443154841981620}
   jumpSoundEffect: {fileID: 4756443154841981630}
 --- !u!114 &4756443154841981625
 MonoBehaviour:
@@ -500,11 +500,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10d6264e50b056948ac7f693764c802c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theEnemySpawner: {fileID: 0}
   enemySpawner: {fileID: 0}
   attackDamage: 10
   attacking: 0
   attackRadius: 10
-  animator: {fileID: 0}
+  animator: {fileID: 4756443154841981629}
+  aimingRotation: {fileID: 0}
 --- !u!114 &4756443154841981624
 MonoBehaviour:
   m_ObjectHideFlags: 0
