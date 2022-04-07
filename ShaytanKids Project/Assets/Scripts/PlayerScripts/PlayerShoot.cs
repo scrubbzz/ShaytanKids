@@ -6,39 +6,27 @@ public class PlayerShoot : MonoBehaviour
 {
     public PlayerAttack playerAttack;
     public GameObject arrow;
+    public GameObject arm;
     public int projectileSpeed;
-
-    public bool isAiming;
     public bool shouldShoot;
     public Vector3 spawnOffset;
     // Start is called before the first frame update
     void Start()
     {
-
+        arm = GameObject.Find("Arm");
     }
 
     // Update is called once per frame
     void Update()
     {
-        ReadInputs();
         ShootArrow();
-        //StopMeleeAttacks();
     }
 
-    public void ReadInputs()
-    {
-        if (Input.GetMouseButton(1))
-        {
-            isAiming = true;
-        }
-        else
-        {
-            isAiming = false;
-        }
-    }
+   
+    
     public void ShootArrow()
     {
-        if (isAiming && playerAttack.attacking == true)
+        if (arm.GetComponent<AimingRotation>().isAiming && playerAttack.attacking == true)
         {
             shouldShoot = true;
             if (shouldShoot)
@@ -54,7 +42,7 @@ public class PlayerShoot : MonoBehaviour
     }
     public void StopMeleeAttacks()
     {
-        if (isAiming)
+        if (arm.GetComponent<AimingRotation>().isAiming)
         {
             playerAttack.enabled = false;
         }

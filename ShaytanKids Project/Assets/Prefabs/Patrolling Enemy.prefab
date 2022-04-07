@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 5246847326860246063}
   - component: {fileID: 5246847326860246058}
   - component: {fileID: 5246847326860246059}
+  - component: {fileID: 8273125199695591304}
   - component: {fileID: 5246847326860246056}
   m_Layer: 0
   m_Name: Patrolling Enemy
@@ -216,6 +217,19 @@ MonoBehaviour:
   shootPos: {fileID: 5246847325871277621}
   player: {fileID: 0}
   bullet: {fileID: 1853833823357678310, guid: d586855360eef794192cf9de00bb1329, type: 3}
+--- !u!114 &8273125199695591304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5246847326860246062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b7b2a1c09dcf74abd040dc1cadd121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
 --- !u!61 &5246847326860246056
 BoxCollider2D:
   m_ObjectHideFlags: 0

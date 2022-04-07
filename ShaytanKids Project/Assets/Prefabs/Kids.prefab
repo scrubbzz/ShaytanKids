@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8110521443991904420}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -24.83, y: 0.83, z: 0}
-  m_LocalScale: {x: 7.421847, y: 5.5345764, z: 2.0076}
+  m_LocalScale: {x: 3, y: 3, z: 0.87192076}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.2193245, g: 0.003488772, b: 0.26415092, a: 1}
+  m_Color: {r: 0.764151, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -128,8 +128,8 @@ MonoBehaviour:
   maxGreed: 100
   currentTrust: 50
   currentGreed: 50
-  player: {fileID: 0}
-  range: 20
+  Light2DObject: {fileID: 0}
+  range: 5
   TheTrustManager: {fileID: 0}
   TheGreedManager: {fileID: 0}
   trustManager: {fileID: 0}
