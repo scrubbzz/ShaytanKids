@@ -15,6 +15,9 @@ TagManager:
   - EnemyArrow
   - Archangel
   - Enemyy
+  - AngelSpawn
+  - BizzaroSpawn
+  - SceneSwitchPortal
   layers:
   - Default
   - TransparentFX

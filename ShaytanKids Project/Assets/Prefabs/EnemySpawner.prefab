@@ -27,8 +27,7 @@ Transform:
   m_LocalPosition: {x: -37.2, y: 38.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1937650947649673353}
+  m_Children: []
   m_Father: {fileID: 1937650947401192992}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -179,58 +178,15 @@ MonoBehaviour:
   bizzaro: {fileID: 0}
   shaytanKid: {fileID: 8110521443991904420, guid: 1e51256743b195945a1c59e158ee4660, type: 3}
   archangel: {fileID: 0}
-  spawnLocations: []
+  kidSpawnLocations: []
+  archangelSpawnLocations: []
+  bizzaroSpawnLocations: []
   enemies: []
   shaytanKids: []
   archangels: []
   timer: 0
   spawnDelay: 3
   spawnRange: 0
---- !u!1 &1937650947649673399
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1937650947649673353}
-  - component: {fileID: 1937650947649673352}
-  m_Layer: 0
-  m_Name: EnemyDestroyer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1937650947649673353
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1937650947649673399}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 38.633774, y: -36.142895, z: -0.034303308}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1937650946455348282}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1937650947649673352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1937650947649673399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ebaa2753b5cd8a4085160a5007ffa1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemySpawner: {fileID: 1937650947401193007}
 --- !u!1 &1937650947714314263
 GameObject:
   m_ObjectHideFlags: 0

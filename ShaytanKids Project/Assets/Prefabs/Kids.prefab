@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8110521443991904419}
   - component: {fileID: 8110521443991904418}
   - component: {fileID: 8110521443991904421}
+  - component: {fileID: -1579614751590195804}
   m_Layer: 3
   m_Name: Kids
   m_TagString: ShaytanKid
@@ -137,3 +138,16 @@ MonoBehaviour:
   killKid: 0
   saveKid: 0
   meterChangeAmount: 10
+--- !u!114 &-1579614751590195804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110521443991904420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15b7b2a1c09dcf74abd040dc1cadd121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100

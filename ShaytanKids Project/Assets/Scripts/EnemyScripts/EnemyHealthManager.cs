@@ -27,6 +27,7 @@ public class EnemyHealthManager : MonoBehaviour
         if (collision.gameObject.tag == ("Arrow"))
         {
             health -= 33;
+            Debug.Log("Health is " + health);
             Destroy(collision.gameObject);
         }
     }

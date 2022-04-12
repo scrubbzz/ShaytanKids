@@ -24,7 +24,7 @@ public class PlayerTeleporter : MonoBehaviour
         {
             currentTeleporter = collision.gameObject;
         }
-        if(collision.gameObject.name == "SceneSwitchPortal")
+        if(collision.gameObject.tag == "SceneSwitchPortal")
         {
             SceneManager.GetSceneByName("Level 1");
         }

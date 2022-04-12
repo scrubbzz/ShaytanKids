@@ -5,8 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitch : MonoBehaviour
 {
-     void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        SceneManager.LoadScene(1);
+        if(collision.gameObject.tag == ("Player"))
+        {
+            SceneManager.LoadScene(1);
+        }
+
     }
 }

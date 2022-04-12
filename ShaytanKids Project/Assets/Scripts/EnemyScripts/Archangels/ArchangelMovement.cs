@@ -9,6 +9,7 @@ public class ArchangelMovement : MonoBehaviour
 
     public bool toggle;
     [SerializeField]
+    public GameObject thePlayer;
     private PlayerAttack playerAttack;
     public float timerLength;
     public float currentTimer;
@@ -36,7 +37,8 @@ public class ArchangelMovement : MonoBehaviour
       
         
             FlyRandomly(toggle);
-        
+        thePlayer = GameObject.FindGameObjectWithTag("Player");
+        playerAttack = thePlayer.GetComponent<PlayerAttack>();
        
     }
 

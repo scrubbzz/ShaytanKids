@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    public GameObject theEnemySpawner;
     public EnemySpawner enemySpawner;
     public int attackDamage;
     public bool attacking;
     public int attackRadius;
     public Animator animator;
+    public AimingRotation aimingRotation;
 
     // Update is called once per frame
 
@@ -16,6 +18,9 @@ public class PlayerAttack : MonoBehaviour
     {
         attackDamage = 20;
         attackRadius = 10;
+        theEnemySpawner = GameObject.Find("EnemySpawner");
+        enemySpawner = theEnemySpawner.GetComponent<EnemySpawner>();
+        aimingRotation = this.transform.GetChild(0).GetComponent<AimingRotation>();
     }
     void Update()
     {
@@ -31,7 +36,12 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             attacking = true;
-            animator.SetTrigger("Attack");
+            if(aimingRotation.isAiming == false)
+            {
+                animator.SetTrigger("Attack");
+            }
+
+            //Debug.Log("Attacking");
         }
         else
         {
@@ -46,7 +56,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 var enemyHealth = enemySpawner.enemies[i].GetComponent<EnemyHealthManager>();
                 enemyHealth.TakeDamage(attackDamage);
-
+                Debug.Log("This enemies health is " + enemyHealth.health);
             }
 
         }
