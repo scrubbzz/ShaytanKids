@@ -21,7 +21,6 @@ public class Checkpoint : MonoBehaviour
             && CheckpointManager.playerSpawnPosition != checkpointPosition)
         {
             CheckpointManager.SetRespawn(checkpointPosition);
-            Debug.Log("Checkpoint set to " + this.gameObject.name); 
         }
     }
 

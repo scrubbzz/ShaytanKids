@@ -17,11 +17,11 @@ public class ItemCounter : MonoBehaviour
     [SerializeField] TextMeshProUGUI onscreenPotionNumber;
 
 
-    public static ItemCounter playerItemCounter; 
+    public static ItemCounter itemCounter; 
     void Awake() // sets up the class to make sure there's only one ItemCounter in the scene
     {
-        if (playerItemCounter == null)
-            playerItemCounter = this;
+        if (itemCounter == null)
+            itemCounter = this;
         else
             Destroy(this);
         
