@@ -49,7 +49,7 @@ public class PlayerHealth : MonoBehaviour
         healthBarManager.playerHealth.value = currentHealth;
     }
 
-    private void TakeDamage(int damage)
+  public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         healthBarManager.SetHealth(currentHealth);

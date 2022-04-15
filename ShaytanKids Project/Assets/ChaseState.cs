@@ -7,6 +7,15 @@ public class ChaseState : StateMachineBehaviour
     Transform target;
     public float speed = 3;
     Transform borderCheck;
+    public GameObject thePlayer;
+    public PlayerHealth playerHealth;
+    public int KidDamage = 10;
+
+    void Start()
+    {
+        thePlayer = GameObject.Find("Player");
+        playerHealth = playerHealth.GetComponent<PlayerHealth>();
+    }
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -27,6 +36,7 @@ public class ChaseState : StateMachineBehaviour
         float distance = Vector2.Distance(target.position, animator.transform.position);
         if (distance < 1.5f)
             animator.SetBool("isAttacking", true);
+        playerHealth.TakeDamage(KidDamage);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
