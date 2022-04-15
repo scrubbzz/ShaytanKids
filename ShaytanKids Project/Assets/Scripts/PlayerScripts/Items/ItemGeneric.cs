@@ -20,6 +20,7 @@ public abstract class ItemGeneric : MonoBehaviour
     {
         //Debug.Log("Collected " + this.name);
         // (play animation for pickup, eg puff of smoke)
+        ItemCounter.itemCounter.UpdateUI();
 
         Destroy(this.gameObject);
     }
