@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class mainMenuu : MonoBehaviour
 {
-   // int index = 1;
+    int index = 0;
 
     public void PlayGame()
     {
         Debug.Log("start");
-        SceneManager.LoadScene("Main Scene");
+        SceneManager.LoadScene(index++);
 
     }
 
