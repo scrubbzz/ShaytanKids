@@ -1060,7 +1060,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 211406372}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 39.3, y: 2.72, z: 0}
+  m_LocalPosition: {x: -2.7, y: 22.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3206,7 +3206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 815995909073827647, guid: ac543d616618e58469a7195166668577, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 51.690907
+      value: 41.2
       objectReference: {fileID: 0}
     - target: {fileID: 815995909073827647, guid: ac543d616618e58469a7195166668577, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3243,6 +3243,10 @@ PrefabInstance:
     - target: {fileID: 815995909073827647, guid: ac543d616618e58469a7195166668577, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 815995909338450122, guid: ac543d616618e58469a7195166668577, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac543d616618e58469a7195166668577, type: 3}
@@ -5281,8 +5285,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1082439199}
   mustPatrol: 0
-  mustTurn: 0
-  canShoot: 0
+  notShooting: 0
+  range: 9
+  shootspeed: 30
+  timeBtwShots: 0.5
   walkspeed: 150
   shootPos: {fileID: 1092344745}
   groundcheckpos: {fileID: 1953988593}
@@ -9011,7 +9017,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1764773197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10138,7 +10144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2058932359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10152,7 +10158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bizzaro: {fileID: 0}
-  shaytanKid: {fileID: 0}
+  shaytanKid: {fileID: 3621980920422663544, guid: a3ea264bd3ef03f44a76785fbe4e855a, type: 3}
   archangel: {fileID: 0}
   kidSpawnLocations: []
   archangelSpawnLocations: []
@@ -10515,12 +10521,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 470449107}
     - target: {fileID: 3621980920422663537, guid: a3ea264bd3ef03f44a76785fbe4e855a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621980920422663537, guid: a3ea264bd3ef03f44a76785fbe4e855a, type: 3}
       propertyPath: rightLimit
       value: 
       objectReference: {fileID: 1389950095}
     - target: {fileID: 3621980920422663544, guid: a3ea264bd3ef03f44a76785fbe4e855a, type: 3}
       propertyPath: m_Name
       value: ShaytanKids
+      objectReference: {fileID: 0}
+    - target: {fileID: 3621980920422663544, guid: a3ea264bd3ef03f44a76785fbe4e855a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3621980920422663547, guid: a3ea264bd3ef03f44a76785fbe4e855a, type: 3}
       propertyPath: m_RootOrder
