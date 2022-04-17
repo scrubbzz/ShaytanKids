@@ -5,6 +5,9 @@ using UnityEngine;
 public class Kid : MonoBehaviour
 {
     Transform target;
+      public GameObject thePlayer;
+    public PlayerHealth playerHealth;
+    public int KidDamage = 10;
     public Transform borderCheck;
     // Start is called before the first frame update
     void Start()
