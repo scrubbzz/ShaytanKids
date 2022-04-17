@@ -8,22 +8,23 @@ public class ItemSpawner : MonoBehaviour
 
     [SerializeField] int buffer = 50; // value for how far up potions should spawn.
 
-    float spawnTimer = 0;
-    float spawnDelay = 5;
+    float spawnDelay;
     [SerializeField] float maxSpawnDelay = 15; 
     [SerializeField] float minSpawnDelay = 10;
 
-    void Update()
+    private void Start()
     {
-        spawnTimer += Time.deltaTime;
+        StartCoroutine(SpawnTimer());
+    }
 
-        if (spawnTimer > spawnDelay)
-        {
-            spawnTimer = 0;
-            spawnDelay = Random.Range(minSpawnDelay, maxSpawnDelay);
+    IEnumerator SpawnTimer()
+    {
+        SpawnItem();
 
-            SpawnItem();
-        }
+        spawnDelay = Random.Range(minSpawnDelay, maxSpawnDelay);
+
+        yield return new WaitForSeconds(spawnDelay);
+        StartCoroutine(SpawnTimer());
     }
 
     // get the height of the screen, pick a random point along the x axis of the screen, 

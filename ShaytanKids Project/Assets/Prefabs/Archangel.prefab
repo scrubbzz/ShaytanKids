@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 308062975015916036}
   - component: {fileID: 308062975015916039}
+  - component: {fileID: 6607745664369174463}
   - component: {fileID: 308062975015916034}
   - component: {fileID: 308062975015916037}
   - component: {fileID: 308062975015916035}
@@ -77,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.82352924, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: -2069715609, guid: 8dfc064b942c1e043b2d1b75d152b86a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -88,6 +89,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6607745664369174463
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308062975015916153}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 42507a9ae3e29ab4f8f72a22ad94f98f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!61 &308062975015916034
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -101,18 +122,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.07872009, y: -0.09183884}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 3.6, y: 3.2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.1574402, y: 1.4985542}
   m_EdgeRadius: 0
 --- !u!50 &308062975015916037
 Rigidbody2D:
@@ -152,7 +173,7 @@ MonoBehaviour:
   distanceToPlayer: 0
   archangelAttackManager: {fileID: 308062975015916032}
   toggle: 0
-  playerAttack: {fileID: 0}
+  thePlayer: {fileID: 0}
   timerLength: 3
   currentTimer: 0
   flightPositions:
@@ -187,3 +208,6 @@ MonoBehaviour:
   projectile: {fileID: 5740009558131552698, guid: 198323cf3d170164fadbd1c2c2dcb38d, type: 3}
   projectileSpeed: 5
   spawnOffset: {x: 0, y: 2}
+  animator: {fileID: 0}
+  animationTimer: 0
+  animationDelay: 2
