@@ -23,7 +23,7 @@ public class ArchangelAttackManager : MonoBehaviour
 
     public Animator animator;
     public float animationTimer;
-    public float animationDelay;
+    public float attackAnimStopTime;
 
     // Start is called before the first frame update 
     void Start()
@@ -31,7 +31,7 @@ public class ArchangelAttackManager : MonoBehaviour
         detectorOrigin = this.transform;
 
         animator = GetComponent<Animator>();
-        animationDelay = fireDelay - 1;
+        attackAnimStopTime =  1f; // the length of the animation clip.
     }
 
     // Update is called once per frame 
@@ -43,7 +43,7 @@ public class ArchangelAttackManager : MonoBehaviour
         LocatePlayer();
         DamagePlayer();
 
-        if (animationTimer >= animationDelay)
+        if (animationTimer >= attackAnimStopTime)
         {
             animator.SetBool("Attacking", false);
         }
@@ -75,7 +75,7 @@ public class ArchangelAttackManager : MonoBehaviour
         {
             animator.SetBool("Attacking", true);
             animationTimer = 0;
-
+            
             GameObject theProjectile = Instantiate(projectile, (Vector2)transform.position + directionToTarget.normalized, /*+ spawnOffset,*/ Quaternion.identity);
             Rigidbody2D rb = theProjectile.GetComponent<Rigidbody2D>();
 

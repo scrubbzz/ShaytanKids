@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2069715609, guid: 8dfc064b942c1e043b2d1b75d152b86a, type: 3}
+  m_Sprite: {fileID: 12847940, guid: c93dbb2c623636248931ba7984df0189, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -210,4 +210,4 @@ MonoBehaviour:
   spawnOffset: {x: 0, y: 2}
   animator: {fileID: 0}
   animationTimer: 0
-  animationDelay: 2
+  attackAnimStopTime: 0
