@@ -104,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Skeleton enemy_0
+      name: a1
       rect:
         serializedVersion: 2
         x: 8
@@ -125,7 +125,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_1
+      name: a2
       rect:
         serializedVersion: 2
         x: 69
@@ -146,7 +146,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_2
+      name: a3
       rect:
         serializedVersion: 2
         x: 129
@@ -167,7 +167,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_3
+      name: a4
       rect:
         serializedVersion: 2
         x: 196
@@ -188,7 +188,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_4
+      name: a5
       rect:
         serializedVersion: 2
         x: 269
@@ -209,7 +209,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_5
+      name: a6
       rect:
         serializedVersion: 2
         x: 335
@@ -230,7 +230,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_6
+      name: a7
       rect:
         serializedVersion: 2
         x: 401
@@ -251,7 +251,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_7
+      name: a8
       rect:
         serializedVersion: 2
         x: 466
@@ -272,7 +272,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_8
+      name: a9
       rect:
         serializedVersion: 2
         x: 514
@@ -293,7 +293,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_9
+      name: a10
       rect:
         serializedVersion: 2
         x: 579
@@ -314,7 +314,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_10
+      name: a11
       rect:
         serializedVersion: 2
         x: 646
@@ -335,7 +335,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_11
+      name: a12
       rect:
         serializedVersion: 2
         x: 706
@@ -356,7 +356,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_12
+      name: a13
       rect:
         serializedVersion: 2
         x: 776
@@ -377,7 +377,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_13
+      name: death1
       rect:
         serializedVersion: 2
         x: 9
@@ -398,7 +398,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_14
+      name: death2
       rect:
         serializedVersion: 2
         x: 73
@@ -419,7 +419,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_15
+      name: death3
       rect:
         serializedVersion: 2
         x: 137
@@ -440,7 +440,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_16
+      name: death4
       rect:
         serializedVersion: 2
         x: 201
@@ -461,7 +461,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_17
+      name: deaeth5
       rect:
         serializedVersion: 2
         x: 264
@@ -482,7 +482,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_18
+      name: d6
       rect:
         serializedVersion: 2
         x: 329
@@ -506,8 +506,8 @@ TextureImporter:
       name: Skeleton enemy_19
       rect:
         serializedVersion: 2
-        x: 383
-        y: 234
+        x: 445
+        y: 61
         width: 4
         height: 4
       alignment: 0
@@ -527,8 +527,8 @@ TextureImporter:
       name: Skeleton enemy_20
       rect:
         serializedVersion: 2
-        x: 415
-        y: 225
+        x: 413
+        y: 45
         width: 13
         height: 15
       alignment: 0
@@ -548,8 +548,8 @@ TextureImporter:
       name: Skeleton enemy_21
       rect:
         serializedVersion: 2
-        x: 479
-        y: 228
+        x: 474
+        y: 68
         width: 12
         height: 13
       alignment: 0
@@ -566,7 +566,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_22
+      name: d9
       rect:
         serializedVersion: 2
         x: 521
@@ -587,7 +587,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_23
+      name: d10
       rect:
         serializedVersion: 2
         x: 585
@@ -608,7 +608,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_24
+      name: d11
       rect:
         serializedVersion: 2
         x: 649
@@ -629,7 +629,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_25
+      name: d12
       rect:
         serializedVersion: 2
         x: 713
@@ -671,13 +671,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_27
+      name: d7
       rect:
         serializedVersion: 2
-        x: 393
+        x: 394
         y: 207
-        width: 42
-        height: 7
+        width: 41
+        height: 33
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -692,13 +692,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_28
+      name: d8
       rect:
         serializedVersion: 2
-        x: 457
+        x: 455
         y: 207
-        width: 42
-        height: 8
+        width: 44
+        height: 34
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -713,7 +713,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_29
+      name: d13
       rect:
         serializedVersion: 2
         x: 777
@@ -734,7 +734,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_30
+      name: w1
       rect:
         serializedVersion: 2
         x: 5
@@ -755,7 +755,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_31
+      name: w2
       rect:
         serializedVersion: 2
         x: 70
@@ -776,7 +776,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_32
+      name: w3
       rect:
         serializedVersion: 2
         x: 134
@@ -797,7 +797,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_33
+      name: w4
       rect:
         serializedVersion: 2
         x: 198
@@ -818,7 +818,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_34
+      name: w5
       rect:
         serializedVersion: 2
         x: 261
@@ -839,7 +839,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_35
+      name: w6
       rect:
         serializedVersion: 2
         x: 325
@@ -860,7 +860,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_36
+      name: w7
       rect:
         serializedVersion: 2
         x: 389
@@ -881,7 +881,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_37
+      name: w8
       rect:
         serializedVersion: 2
         x: 452
@@ -902,7 +902,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_38
+      name: w9
       rect:
         serializedVersion: 2
         x: 516
@@ -923,7 +923,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_39
+      name: w10
       rect:
         serializedVersion: 2
         x: 580
@@ -944,7 +944,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_40
+      name: w11
       rect:
         serializedVersion: 2
         x: 645
@@ -965,7 +965,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_41
+      name: w12
       rect:
         serializedVersion: 2
         x: 709
@@ -986,7 +986,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_42
+      name: i1
       rect:
         serializedVersion: 2
         x: 9
@@ -1007,7 +1007,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_43
+      name: idle2
       rect:
         serializedVersion: 2
         x: 73
@@ -1028,7 +1028,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_44
+      name: i3
       rect:
         serializedVersion: 2
         x: 137
@@ -1049,7 +1049,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_45
+      name: i4
       rect:
         serializedVersion: 2
         x: 201
@@ -1070,7 +1070,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_46
+      name: p1
       rect:
         serializedVersion: 2
         x: 9
@@ -1091,7 +1091,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_47
+      name: p2
       rect:
         serializedVersion: 2
         x: 73
@@ -1112,7 +1112,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Skeleton enemy_48
+      name: p3
       rect:
         serializedVersion: 2
         x: 137
@@ -1143,54 +1143,54 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Skeleton enemy_7: -448275708
-      Skeleton enemy_25: 1931989659
-      Skeleton enemy_5: 1347691657
-      Skeleton enemy_16: 1282906626
-      Skeleton enemy_1: 952092744
-      Skeleton enemy_2: 434919365
-      Skeleton enemy_37: -511522738
-      Skeleton enemy_24: -1317919234
-      Skeleton enemy_46: -1377745012
-      Skeleton enemy_12: 993818070
-      Skeleton enemy_29: 1357682270
-      Skeleton enemy_43: -1611920563
-      Skeleton enemy_40: -1955794353
-      Skeleton enemy_41: -221383055
-      Skeleton enemy_42: -1225727360
-      Skeleton enemy_11: 2107147795
-      Skeleton enemy_9: -678961504
-      Skeleton enemy_33: 510368056
-      Skeleton enemy_39: 260662913
-      Skeleton enemy_30: 1618299240
-      Skeleton enemy_3: 1027586223
-      Skeleton enemy_45: -600973090
-      Skeleton enemy_47: 328640474
+      d7: 1625694331
+      a8: -448275708
+      a1: 604499941
+      d6: -891617008
+      a13: 993818070
+      w12: -221383055
+      p2: 328640474
+      i4: -600973090
+      idle2: -1611920563
+      w1: 1618299240
+      d8: -287450091
+      i1: -1225727360
+      d10: -1100711537
+      a7: 836152459
+      w2: 1600177602
+      p3: -800318646
+      a3: 434919365
+      a6: 1347691657
+      d13: 1357682270
+      deaeth5: 118777241
+      death1: -224381141
+      death3: 1805211006
+      w11: -1955794353
+      w7: 31254976
+      a5: 730765204
+      a11: 1055211946
+      a12: 2107147795
       Skeleton enemy_20: 889194371
-      Skeleton enemy_17: 118777241
-      Skeleton enemy_22: 1914490754
-      Skeleton enemy_27: 1625694331
-      Skeleton enemy_28: -287450091
-      Skeleton enemy_23: -1100711537
-      Skeleton enemy_34: -1849977421
-      Skeleton enemy_15: 1805211006
-      Skeleton enemy_8: 260508078
-      Skeleton enemy_31: 1600177602
-      Skeleton enemy_48: -800318646
-      Skeleton enemy_13: -224381141
-      Skeleton enemy_38: -397995709
-      Skeleton enemy_18: -891617008
-      Skeleton enemy_32: 1299093243
-      Skeleton enemy_10: 1055211946
-      Skeleton enemy_6: 836152459
-      Skeleton enemy_35: -426108264
-      Skeleton enemy_44: -1061374195
-      Skeleton enemy_4: 730765204
+      death2: 1696601593
+      a2: 952092744
+      a9: 260508078
+      w3: 1299093243
+      a4: 1027586223
+      p1: -1377745012
+      w10: 260662913
+      a10: -678961504
+      d11: -1317919234
       Skeleton enemy_26: 1850716108
-      Skeleton enemy_36: 31254976
+      death4: 1282906626
+      w8: -511522738
+      i3: -1061374195
+      w4: 510368056
       Skeleton enemy_19: -652118051
-      Skeleton enemy_14: 1696601593
-      Skeleton enemy_0: 604499941
+      d9: 1914490754
+      w5: -1849977421
+      w6: -426108264
+      d12: 1931989659
+      w9: -397995709
       Skeleton enemy_21: -227999278
   spritePackingTag: 
   pSDRemoveMatte: 0
