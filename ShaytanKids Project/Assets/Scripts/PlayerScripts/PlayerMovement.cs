@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public ParticleSystem dust;
     public float currentMoveSpeed;
-    public int maxMoveSpeed;
+    public float maxMoveSpeed;
     public bool moveLeft;
     public bool moveRight;
     public int horizontalInput;
@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     /*public bool shouldSprint;
     public int sprintSpeed;
 */
-    public int jumpHeight;
+    public float jumpHeight;
     public int jumpCount;
     public bool isGrounded;
     public bool canJump;

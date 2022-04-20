@@ -6,12 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class mainMenuu : MonoBehaviour
 {
-   // int index = 1;
+    int index = 0;
 
     public void PlayGame()
     {
         Debug.Log("start");
-        SceneManager.LoadScene("Main Scene");
+<<<<<<< HEAD
+        SceneManager.LoadScene(index++);
+=======
+        SceneManager.LoadScene("Level 1");
+>>>>>>> main
 
     }
 
@@ -29,7 +33,7 @@ public class mainMenuu : MonoBehaviour
     public void PlayTutoriallevel()
     {
         Debug.Log("start");
-        SceneManager.LoadScene("Tutorial polish");
+        SceneManager.LoadScene("TutorialLevel");
 
     }
     

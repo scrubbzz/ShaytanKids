@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    public GameObject theEnemySpawner;
     public EnemySpawner enemySpawner;
-    public int attackDamage;
+    public float attackDamage;
     public bool attacking;
     public int attackRadius;
     public Animator animator;
+    public AimingRotation aimingRotation;
 
     // Update is called once per frame
 
     private void Start()
     {
-        attackDamage = 10;
-        attackRadius = 10;
+        attackDamage = 20;
+        attackRadius = 4;
+        theEnemySpawner = GameObject.Find("EnemySpawner");
+        enemySpawner = theEnemySpawner.GetComponent<EnemySpawner>();
+        aimingRotation = this.transform.GetChild(0).GetComponent<AimingRotation>();
     }
     void Update()
     {
@@ -31,7 +36,12 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             attacking = true;
-            animator.SetTrigger("Attack");
+            if(aimingRotation.isAiming == false)
+            {
+                animator.SetTrigger("Attack");
+            }
+
+            //Debug.Log("Attacking");
         }
         else
         {
@@ -42,11 +52,14 @@ public class PlayerAttack : MonoBehaviour
     {
         for (int i = 0; i < enemySpawner.enemies.Count; i++)
         {
-            if (Vector2.Distance(this.transform.position, enemySpawner.enemies[i].transform.position) <= attackRadius)
+            if(enemySpawner.enemies[i] != null)
             {
-                var enemyHealth = enemySpawner.enemies[i].GetComponent<EnemyHealthManager>();
-                enemyHealth.TakeDamage(attackDamage);
-
+                if (Vector2.Distance(this.transform.position, enemySpawner.enemies[i].transform.position) <= attackRadius)
+                {
+                    var enemyHealth = enemySpawner.enemies[i].GetComponent<EnemyHealthManager>();
+                    enemyHealth.TakeDamage(attackDamage);
+                    //Debug.Log("This enemies health is " + enemyHealth.health);
+                }
             }
 
         }

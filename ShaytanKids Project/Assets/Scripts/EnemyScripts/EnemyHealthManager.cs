@@ -8,7 +8,7 @@ public class EnemyHealthManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //health = 100;
+        health = 100;
     }
 
     // Update is called once per frame
@@ -16,10 +16,10 @@ public class EnemyHealthManager : MonoBehaviour
     {
         DestroyEnemy();
     }
-    public void TakeDamage(int playerAttackDamage)
+    public void TakeDamage(float playerAttackDamage)
     {
-        health -= playerAttackDamage;
-        Debug.Log(health);
+        health -= (int)playerAttackDamage;
+        //Debug.Log(health);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,6 +27,7 @@ public class EnemyHealthManager : MonoBehaviour
         if (collision.gameObject.tag == ("Arrow"))
         {
             health -= 33;
+            Debug.Log("Health is " + health);
             Destroy(collision.gameObject);
         }
     }

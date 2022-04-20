@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4756443153806994745}
   - component: {fileID: 4756443153806994751}
   - component: {fileID: 4756443153806994744}
-  - component: {fileID: 4756443153806994750}
+  - component: {fileID: 956304978}
   m_Layer: 3
   m_Name: Bow
   m_TagString: Untagged
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 4756443153806994746}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1.27, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 2.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4756443154687772830}
@@ -100,18 +100,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAttack: {fileID: 4756443154841981625}
   arrow: {fileID: 4623151786229393647, guid: ac7477c96146e3a4c953383d96e3db49, type: 3}
+  arm: {fileID: 4756443154687772831}
   projectileSpeed: 20
-  isAiming: 0
   shouldShoot: 0
   spawnOffset: {x: 0, y: 2, z: 0}
---- !u!114 &4756443153806994750
+--- !u!114 &956304978
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4756443153806994746}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4962f4fcf33917a44b8a369b052fd1fa, type: 3}
   m_Name: 
@@ -120,6 +120,7 @@ MonoBehaviour:
   mousePosInWorldSpace: {x: 0, y: 0, z: 0}
   camera: {fileID: 0}
   direction: {x: 0, y: 0}
+  isAiming: 0
 --- !u!1 &4756443153862871296
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,8 +220,8 @@ MonoBehaviour:
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
-  m_PointLightInnerRadius: 15
-  m_PointLightOuterRadius: 30
+  m_PointLightInnerRadius: 30
+  m_PointLightOuterRadius: 60
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -244,7 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   light: {fileID: 0}
-  lightLossAmount: 1
+  lightLossAmount: 0.35
   lightAddAmount: 4
   theEnemySpawner: {fileID: 0}
   enemySpawner: {fileID: 0}
@@ -259,6 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4756443154687772830}
   - component: {fileID: 4756443154687772829}
+  - component: {fileID: 1986514853}
   m_Layer: 3
   m_Name: Arm
   m_TagString: Untagged
@@ -298,6 +300,25 @@ MonoBehaviour:
   mousePosInWorldSpace: {x: 0, y: 0, z: 0}
   camera: {fileID: 0}
   direction: {x: 0, y: 0}
+  isAiming: 0
+--- !u!114 &1986514853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756443154687772831}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e77e75ab61e436a45868a180989c0736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAttack: {fileID: 0}
+  arrow: {fileID: 0}
+  arm: {fileID: 0}
+  projectileSpeed: 0
+  shouldShoot: 0
+  spawnOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &4756443154841981623
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,7 +355,7 @@ Transform:
   m_GameObject: {fileID: 4756443154841981623}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 16.79, y: 2.72, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7904055, y: 0.9484865, z: 0.31616217}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4756443154687772830}
@@ -435,7 +456,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 1.25
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -462,9 +483,10 @@ MonoBehaviour:
   jumpCount: 0
   isGrounded: 0
   canJump: 0
+  isFalling: 0
   shouldSlide: 0
   slidingPower: 0
-  thePlayer: {fileID: 0}
+  thePlayer: {fileID: 4756443154841981620}
   jumpSoundEffect: {fileID: 4756443154841981630}
 --- !u!114 &4756443154841981625
 MonoBehaviour:
@@ -478,10 +500,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10d6264e50b056948ac7f693764c802c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  theEnemySpawner: {fileID: 0}
   enemySpawner: {fileID: 0}
   attackDamage: 10
   attacking: 0
   attackRadius: 10
+  animator: {fileID: 4756443154841981629}
+  aimingRotation: {fileID: 0}
 --- !u!114 &4756443154841981624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,6 +521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 0
+  healthBar: {fileID: 0}
   healthBarManager: {fileID: 0}
   healthRegenTimer: 3
   currentHealthRegenTimer: 0
