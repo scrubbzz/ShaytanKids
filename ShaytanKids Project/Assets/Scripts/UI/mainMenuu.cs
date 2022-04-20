@@ -10,12 +10,8 @@ public class mainMenuu : MonoBehaviour
 
     public void PlayGame()
     {
-        Debug.Log("start");
-<<<<<<< HEAD
-        SceneManager.LoadScene(index++);
-=======
+        Debug.Log("start"); 
         SceneManager.LoadScene("Level 1");
->>>>>>> main
 
     }
 

@@ -8,7 +8,7 @@ public class GateKeyCollectible : ItemGeneric
     public override void PickUp()
     {
         ItemCounter.gateKeyCount++;
-        ItemCounter.playerItemCounter.UpdateUI();
+        
         keySound.Play();
         Debug.Log("Picked up a key.");
 
