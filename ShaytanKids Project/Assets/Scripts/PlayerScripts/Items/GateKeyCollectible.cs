@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class GateKeyCollectible : ItemGeneric
 {
+    public AudioSource keySound;
     public override void PickUp()
     {
         ItemCounter.gateKeyCount++;
-
-        //Debug.Log("Picked up a key.");
+        
+        keySound.Play();
+        Debug.Log("Picked up a key.");
 
         base.PickUp(); // plays animation, destroys the object.
     }
 }
+ 
