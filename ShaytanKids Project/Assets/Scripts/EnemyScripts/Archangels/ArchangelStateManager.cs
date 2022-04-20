@@ -28,12 +28,29 @@ public class ArchangelStateManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();
+
         Target = GameObject.FindGameObjectWithTag("Player");
         chasingState = new ChasingState(chaseTimerLength);
         patrollingState = new PatrollingState(changePosTimerLength);
         attackingState = new AttackingState(fireDelayLength, this);
         currentMovement = patrollingState;
-     
+
+        flightPositions = new Vector3[]
+        {
+            new Vector3(-15, 0, 0),
+            new Vector3(0, 10, 0),
+            new Vector3 (15, -10, 0)
+        };
+
+        movementSpeed = 10;
+        changePosTimerLength = 4;
+        detectionRadius = 30;
+        chaseTimerLength = 10;
+        fireDelayLength = 2;
+        projectileSpeed = 5;
+        //projectile = GameObject.FindGameObjectWithTag("EnemyArrow");
+        shootingRadius = 18;
     }
 
     // Update is called once per frame
