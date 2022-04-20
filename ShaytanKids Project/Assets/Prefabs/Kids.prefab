@@ -127,17 +127,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxTrust: 100
   maxGreed: 100
-  currentTrust: 50
-  currentGreed: 50
+  meterValuescurrentTrust: 0
+  meterValuescurrentGreed: 0
   Light2DObject: {fileID: 0}
   range: 5
   TheTrustManager: {fileID: 0}
   TheGreedManager: {fileID: 0}
   trustManager: {fileID: 0}
   greedManager: {fileID: 0}
+  MeterValueHolder: {fileID: 0}
+  meterValues: {fileID: 0}
   killKid: 0
   saveKid: 0
-  meterChangeAmount: 10
 --- !u!114 &-1579614751590195804
 MonoBehaviour:
   m_ObjectHideFlags: 0

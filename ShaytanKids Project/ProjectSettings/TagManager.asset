@@ -18,6 +18,8 @@ TagManager:
   - AngelSpawn
   - BizzaroSpawn
   - SceneSwitchPortal
+  - Bizzaro
+  - Projectile
   layers:
   - Default
   - TransparentFX

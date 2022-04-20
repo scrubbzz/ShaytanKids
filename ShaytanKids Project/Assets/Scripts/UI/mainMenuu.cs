@@ -11,7 +11,7 @@ public class mainMenuu : MonoBehaviour
     public void PlayGame()
     {
         Debug.Log("start");
-        SceneManager.LoadScene("Main Scene");
+        SceneManager.LoadScene("Level 1");
 
     }
 
@@ -29,7 +29,7 @@ public class mainMenuu : MonoBehaviour
     public void PlayTutoriallevel()
     {
         Debug.Log("start");
-        SceneManager.LoadScene("Tutorial polish");
+        SceneManager.LoadScene("TutorialLevel");
 
     }
     
