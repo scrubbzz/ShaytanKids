@@ -106,7 +106,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 6
+  m_Constraints: 0
 --- !u!114 &1853833823357678311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,5 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b3f75fcd2c30d49869a0625a5a7bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeUntilDead: 2
+  dieTime: 0
   damage: 3
+  diePeect: {fileID: 0}

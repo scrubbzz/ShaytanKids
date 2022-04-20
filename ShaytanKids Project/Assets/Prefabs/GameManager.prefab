@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 1826026409565220908}
   - component: {fileID: 1826026409565220911}
   - component: {fileID: 1826026409565220909}
-  - component: {fileID: 4305048130933654665}
+  - component: {fileID: 1399520434}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onscreenKeyNumber: {fileID: 0}
   onscreenPotionNumber: {fileID: 0}
---- !u!114 &4305048130933654665
+--- !u!114 &1399520434
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -69,10 +69,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1826026409565220910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39b4459098efa6e4dab93180a36173eb, type: 3}
+  m_Script: {fileID: 11500000, guid: cb9d65f5cc0005241baee613deec9494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemToSpawn: {fileID: 0}
-  buffer: 50
-  maxSpawnDelay: 15
-  minSpawnDelay: 10
+  powerUpDuration: 10
+  powerUpStrength: 2
+  itemDisplay: {fileID: 0}
+  playerMovement: {fileID: 0}
+  playerAttack: {fileID: 0}
+  playerShoot: {fileID: 0}
+  powerUpType: 0
+  numberOfStates: 4
+  meters: {fileID: 0}
+  maxRandomness: 0
+  contingencyTimer: 0

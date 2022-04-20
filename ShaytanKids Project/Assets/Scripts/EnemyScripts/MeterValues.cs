@@ -11,13 +11,13 @@ public class MeterValues : MonoBehaviour
     {
         currentTrust = 50;
         currentGreed = 50;
-        meterChangeAmount = 10;
     }
 
 
 
     void Update()
     {
+        meterChangeAmount = 10;
         
     }
 }

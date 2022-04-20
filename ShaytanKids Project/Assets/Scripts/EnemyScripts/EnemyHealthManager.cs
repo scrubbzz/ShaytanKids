@@ -16,10 +16,10 @@ public class EnemyHealthManager : MonoBehaviour
     {
         DestroyEnemy();
     }
-    public void TakeDamage(int playerAttackDamage)
+    public void TakeDamage(float playerAttackDamage)
     {
-        health -= playerAttackDamage;
-        Debug.Log(health);
+        health -= (int)playerAttackDamage;
+        //Debug.Log(health);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -32,13 +32,14 @@ public class ArchangelMovement : MonoBehaviour
     void Update()
     {
         //LocatePlayer();
+        thePlayer = GameObject.FindGameObjectWithTag("Player");
+        playerAttack = thePlayer.GetComponent<PlayerAttack>();
         ToggleFlightTowardsPlayer();
          FlyTowardsPlayer(toggle);
       
         
             FlyRandomly(toggle);
-        thePlayer = GameObject.FindGameObjectWithTag("Player");
-        playerAttack = thePlayer.GetComponent<PlayerAttack>();
+      
        
     }
 
@@ -90,12 +91,12 @@ public class ArchangelMovement : MonoBehaviour
             //Debug.Log(changePosTimer);
         }
     }
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, 20);    
             
-    }
+    }*/
 
 
 }
