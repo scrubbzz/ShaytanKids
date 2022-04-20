@@ -6,7 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     public GameObject theEnemySpawner;
     public EnemySpawner enemySpawner;
-    public int attackDamage;
+    public float attackDamage;
     public bool attacking;
     public int attackRadius;
     public Animator animator;

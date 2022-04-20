@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitch : MonoBehaviour
 {
+    int numberOfKeysNeeded;
+
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == ("Player"))
+        if(collision.gameObject.tag == ("Player") && 
+            ItemCounter.gateKeyCount >= numberOfKeysNeeded)
         {
+            ItemCounter.gateKeyCount = ItemCounter.gateKeyCount - numberOfKeysNeeded;
             SceneManager.LoadScene(1);
         }
 
