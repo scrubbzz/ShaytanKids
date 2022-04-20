@@ -7,7 +7,7 @@ public class PlayerShoot : MonoBehaviour
     public PlayerAttack playerAttack;
     public GameObject arrow;
     public GameObject arm;
-    public int projectileSpeed;
+    public float projectileSpeed;
     public bool shouldShoot;
     public Vector3 spawnOffset;
     // Start is called before the first frame update
