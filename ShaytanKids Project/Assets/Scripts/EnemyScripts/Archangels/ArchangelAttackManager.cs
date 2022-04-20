@@ -14,7 +14,7 @@ public class ArchangelAttackManager : MonoBehaviour
     public Vector2 directionToTarget;
     public LayerMask detectorLayermask;
 
-    public float timer;
+    public float fireTimer;
     public float fireDelay;
 
     public GameObject projectile;
@@ -31,7 +31,7 @@ public class ArchangelAttackManager : MonoBehaviour
     // Update is called once per frame 
     void Update()
     {
-        timer += Time.deltaTime;
+        fireTimer += Time.deltaTime;
         LocatePlayer();
         DamagePlayer();
     }
@@ -56,7 +56,7 @@ public class ArchangelAttackManager : MonoBehaviour
         }
         
 
-        if (Target != null && timer >= fireDelay)
+        if (Target != null && fireTimer >= fireDelay)
         {
             GameObject theProjectile = Instantiate(projectile, (Vector2)transform.position + directionToTarget.normalized, /*+ spawnOffset,*/ Quaternion.identity);
             Rigidbody2D rb = theProjectile.GetComponent<Rigidbody2D>();
@@ -65,16 +65,16 @@ public class ArchangelAttackManager : MonoBehaviour
             rb.velocity = direction;
             rb.transform.up = direction;
 
-            timer = 0;
+            fireTimer = 0;
             Debug.Log("The player is here");
         }
         
 
     }
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(transform.position, detectorSize);
-    }
+    }*/
 
 }

@@ -52,11 +52,14 @@ public class PlayerAttack : MonoBehaviour
     {
         for (int i = 0; i < enemySpawner.enemies.Count; i++)
         {
-            if (Vector2.Distance(this.transform.position, enemySpawner.enemies[i].transform.position) <= attackRadius)
+            if(enemySpawner.enemies[i] != null)
             {
-                var enemyHealth = enemySpawner.enemies[i].GetComponent<EnemyHealthManager>();
-                enemyHealth.TakeDamage(attackDamage);
-                Debug.Log("This enemies health is " + enemyHealth.health);
+                if (Vector2.Distance(this.transform.position, enemySpawner.enemies[i].transform.position) <= attackRadius)
+                {
+                    var enemyHealth = enemySpawner.enemies[i].GetComponent<EnemyHealthManager>();
+                    enemyHealth.TakeDamage(attackDamage);
+                    //Debug.Log("This enemies health is " + enemyHealth.health);
+                }
             }
 
         }

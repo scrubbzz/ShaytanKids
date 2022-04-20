@@ -19,7 +19,7 @@ public class EnemyHealthManager : MonoBehaviour
     public void TakeDamage(int playerAttackDamage)
     {
         health -= playerAttackDamage;
-        Debug.Log(health);
+        //Debug.Log(health);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
