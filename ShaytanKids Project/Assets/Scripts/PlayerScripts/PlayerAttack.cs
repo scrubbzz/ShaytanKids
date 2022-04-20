@@ -17,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         attackDamage = 20;
-        attackRadius = 10;
+        attackRadius = 4;
         theEnemySpawner = GameObject.Find("EnemySpawner");
         enemySpawner = theEnemySpawner.GetComponent<EnemySpawner>();
         aimingRotation = this.transform.GetChild(0).GetComponent<AimingRotation>();

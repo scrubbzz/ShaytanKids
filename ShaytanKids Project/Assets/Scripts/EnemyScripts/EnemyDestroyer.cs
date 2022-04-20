@@ -6,6 +6,8 @@ public class EnemyDestroyer : MonoBehaviour
 {
     public GameObject theEnemySpawner;
     public EnemySpawner enemySpawner;
+    public float timer = 3;
+    public bool enemyDied;
    
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,11 @@ public class EnemyDestroyer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer -= Time.deltaTime;
+        if(timer <= 0)
+        {
+            enemyDied = false;
+        }
         DestroyDeadEnemies();
     }
     public void DestroyDeadEnemies()
@@ -31,6 +38,9 @@ public class EnemyDestroyer : MonoBehaviour
                     Destroy(enemySpawner.enemies[i].gameObject);
                     enemySpawner.enemies.RemoveAt(i);
                     enemySpawner.spawnCount--;
+                    enemyDied = true;
+                    timer = 3;
+
 
                 }
             }
