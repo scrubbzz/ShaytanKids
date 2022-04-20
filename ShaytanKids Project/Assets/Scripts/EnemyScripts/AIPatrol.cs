@@ -6,9 +6,9 @@ public class AIPatrol : MonoBehaviour
 {
     private float distToPlayer;
 
-    [HideInInspector]
+    
     public bool mustPatrol;
-    private bool mustTurn, canShoot;
+  public bool mustTurn, notShooting;
 
     public Rigidbody2D rb;
     public float range, timeBtwShots, shootspeed;
@@ -23,7 +23,7 @@ public class AIPatrol : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         mustPatrol = true;
-        canShoot = true;
+        notShooting = true;
         
     }
 
@@ -46,8 +46,9 @@ public class AIPatrol : MonoBehaviour
             mustPatrol = false;
             rb.velocity = Vector2.zero;
 
-            if(canShoot)
+            if (notShooting) { 
             StartCoroutine(shoot());
+            }
         }
         else
         {
@@ -58,18 +59,19 @@ public class AIPatrol : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (mustPatrol)
+        /*if (mustPatrol)
         {
             mustTurn = !Physics2D.OverlapCircle(groundcheckpos.position, 0.1f, groundLayer);
-        }
+        }*/
 
     }
 
     void Patrol()
     {
-        if (mustTurn || bodycollider.IsTouchingLayers(groundLayer))
+        if (/*mustTurn ||*/ bodycollider.IsTouchingLayers(groundLayer))
         {
             Flip();
+            
         }
         rb.velocity = new Vector2(walkspeed * Time.fixedDeltaTime, rb.velocity.y);
     }
@@ -84,11 +86,11 @@ public class AIPatrol : MonoBehaviour
 
     IEnumerator shoot()
     {
-        canShoot = false; 
+        notShooting = false; 
         yield return new WaitForSeconds(timeBtwShots);
         GameObject newbullet = Instantiate(bullet, shootPos.position, Quaternion.identity);
         newbullet.GetComponent<Rigidbody2D>().velocity = new Vector2(shootspeed * walkspeed * Time.fixedDeltaTime, 0f);
         Debug.Log("Shoot");
-        canShoot = true;
+        notShooting = true;
     }
 }

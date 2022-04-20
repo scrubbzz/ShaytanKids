@@ -14,6 +14,7 @@ TagManager:
   - ShaytanKid
   - EnemyArrow
   - Archangel
+  - Enemyy
   - AngelSpawn
   - BizzaroSpawn
   - SceneSwitchPortal
@@ -26,7 +27,7 @@ TagManager:
   - UI
   - Ground
   - Enemy
-  - 
+  - Player
   - 
   - 
   - 

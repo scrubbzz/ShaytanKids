@@ -119,6 +119,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b3f75fcd2c30d49869a0625a5a7bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dieTime: 2
+  timeUntilDead: 2
   damage: 3
-  diePeect: {fileID: 0}

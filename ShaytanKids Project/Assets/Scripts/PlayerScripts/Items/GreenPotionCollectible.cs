@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class GreenPotionCollectible : ItemGeneric
 {
-    // code for having potions slow fall.
-    Rigidbody2D rb;
-    [SerializeField] float fallSpeed;
-    private void OnEnable()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(0, fallSpeed);
-    }
+    // note: falling physics for potions is now done with Rigidbody2D. check the component
+    // and edit the mass, drag and gravity values if you'd like to change fall speed.
 
-
+    float timer;
+    [SerializeField] float timeTillDestroyed = 20;
     public override void PickUp() 
     {
         ItemCounter.potionCount++;
-        ItemCounter.playerItemCounter.UpdateUI();
 
-        Debug.Log("Picked up a potion.");
+        //Debug.Log("Picked up a potion.");
 
         base.PickUp(); // plays animation, destroys the object.
+    }
+
+    private void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer >= timeTillDestroyed)
+        {
+            Destroy(gameObject);
+        }
     }
 }

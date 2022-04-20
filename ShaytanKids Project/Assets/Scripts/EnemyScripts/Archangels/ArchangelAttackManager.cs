@@ -21,11 +21,17 @@ public class ArchangelAttackManager : MonoBehaviour
     public int projectileSpeed;
     public Vector2 spawnOffset;
 
+    public Animator animator;
+    public float animationTimer;
+    public float attackAnimStopTime;
+
     // Start is called before the first frame update 
     void Start()
     {
-        
         detectorOrigin = this.transform;
+
+        animator = GetComponent<Animator>();
+        attackAnimStopTime =  1f; // the length of the animation clip.
     }
 
     // Update is called once per frame 
@@ -34,6 +40,11 @@ public class ArchangelAttackManager : MonoBehaviour
         fireTimer += Time.deltaTime;
         LocatePlayer();
         DamagePlayer();
+
+        if (animationTimer >= attackAnimStopTime)
+        {
+            animator.SetBool("Attacking", false);
+        }
     }
     public void LocatePlayer()
     {
@@ -48,6 +59,8 @@ public class ArchangelAttackManager : MonoBehaviour
             Target = null;
         }
     }
+
+
     public void DamagePlayer()
     {
         if(Target != null)
@@ -58,6 +71,9 @@ public class ArchangelAttackManager : MonoBehaviour
 
         if (Target != null && fireTimer >= fireDelay)
         {
+            animator.SetBool("Attacking", true);
+            animationTimer = 0;
+            
             GameObject theProjectile = Instantiate(projectile, (Vector2)transform.position + directionToTarget.normalized, /*+ spawnOffset,*/ Quaternion.identity);
             Rigidbody2D rb = theProjectile.GetComponent<Rigidbody2D>();
 
@@ -68,8 +84,8 @@ public class ArchangelAttackManager : MonoBehaviour
             fireTimer = 0;
             Debug.Log("The player is here");
         }
-        
 
+        //animator.SetBool("Attacking", false);
     }
     /*private void OnDrawGizmos()
     {

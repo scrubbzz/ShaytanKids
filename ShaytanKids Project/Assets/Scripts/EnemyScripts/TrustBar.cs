@@ -9,17 +9,19 @@ public class TrustBar : MonoBehaviour
     private float distToPlayer;
     public int maxTrust = 100;
     public int maxGreed = 100;
-    public int currentTrust;
-    public int currentGreed;
+   public int meterValuescurrentTrust;
+    public int meterValuescurrentGreed;
     public GameObject Light2DObject;
     public float range;
     public GameObject TheTrustManager;
     public GameObject TheGreedManager;
     public TrustManager trustManager;
     public GreedManager greedManager;
+    public GameObject MeterValueHolder;
+    public MeterValues meterValues;
     public bool killKid;
     public bool saveKid;
-    public int meterChangeAmount;
+  
     private void Awake()
     {
         /*TheTrustManager = GameObject.Find("TrustManager");
@@ -30,24 +32,27 @@ public class TrustBar : MonoBehaviour
         //player = GameObject.FindGameObjectWithTag("Player");
        /* trustManager = TheTrustManager.GetComponent<TrustManager>();
         greedManager = TheGreedManager.GetComponent<GreedManager>();*/
-        currentTrust = 50;
-        currentGreed = 50;
+        //currentTrust = 50;
+        //currentGreed = 50;
        /* trustManager.SetMaxBar(100);
         greedManager.SetMaxBar(100);*/
-        meterChangeAmount = 10;
+      //  meterChangeAmount = 10;
     }
 
  
     void Update()
     {
+        MeterValueHolder = GameObject.Find("Main Camera");
+        meterValues = MeterValueHolder.GetComponent<MeterValues>();
         FindRequiredComponents();
         SetTrustAndGreedMeters();
         distToPlayer = Vector2.Distance(transform.position, Light2DObject.transform.position);
         if (distToPlayer <= range && Input.GetKeyDown(KeyCode.L))
         {
             saveKid = true;
-            DecreaseGreed(meterChangeAmount);
-            IncreaseTrust(meterChangeAmount);
+            DecreaseGreed(meterValues.meterChangeAmount);
+            IncreaseTrust(meterValues.meterChangeAmount);
+            Destroy(this.gameObject);
         }
         else
         {
@@ -61,8 +66,8 @@ public class TrustBar : MonoBehaviour
         }*/
         if(this.gameObject.GetComponent<EnemyHealthManager>().health <= 25 || Input.GetKeyDown(KeyCode.O))
         {
-            DecreaseTrust(meterChangeAmount);
-            IncreaseGreed(meterChangeAmount);
+           DecreaseTrust(meterValues.meterChangeAmount);
+            IncreaseGreed(meterValues.meterChangeAmount);
 
         }
         else
@@ -92,35 +97,35 @@ public class TrustBar : MonoBehaviour
 
     void IncreaseTrust(int saveKids)
     {
-        currentTrust += saveKids;
-        if (currentTrust > maxTrust)
+        meterValues.currentTrust += saveKids;
+        if (meterValues.currentTrust > maxTrust)
         {
-            currentTrust = maxTrust;
+            meterValues.currentTrust = maxTrust;
         }
-        trustManager.SetBar(currentTrust);
+        trustManager.SetBar(meterValues.currentTrust);
        
     }
 
     void DecreaseTrust(int saveKids)
     {
-        currentTrust -= saveKids;
-        if (currentTrust < 0)
+        meterValues.currentTrust -= saveKids;
+        if (meterValues.currentTrust < 0)
         {
-            currentTrust = 0;
+            meterValues.currentTrust = 0;
         }
-        trustManager.SetBar(currentTrust);
+        trustManager.SetBar(meterValues.currentTrust);
   
     }
 
 
     void IncreaseGreed(int killKids)
     {
-        currentGreed += killKids;
-        if (currentGreed > maxGreed)
+        meterValues.currentGreed += killKids;
+        if (meterValues.currentGreed > maxGreed)
         {
-            currentGreed = maxGreed;
+            meterValues.currentGreed = maxGreed;
         }
-        greedManager.SetBar(currentGreed);
+        greedManager.SetBar(meterValues.currentGreed);
         var thePlayerLight = this.Light2DObject.GetComponent<TheLightManager>();
         thePlayerLight.light.pointLightInnerRadius += thePlayerLight.lightAddAmount;
         thePlayerLight.light.pointLightOuterRadius += thePlayerLight.lightAddAmount * 2;
@@ -128,12 +133,12 @@ public class TrustBar : MonoBehaviour
     }
     void DecreaseGreed(int killKids)
     {
-        currentGreed -= killKids;
-        if (currentGreed < 0)
+        meterValues.currentGreed -= killKids;
+        if (meterValuescurrentGreed < 0)
         {
-            currentGreed = 0;
+            meterValues.currentGreed = 0;
         }
-        greedManager.SetBar(currentGreed);
+        greedManager.SetBar(meterValues.currentGreed);
 
     }
     private void OnDrawGizmos()
