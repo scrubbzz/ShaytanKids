@@ -21,6 +21,7 @@ public class TrustBar : MonoBehaviour
     public MeterValues meterValues;
     public bool killKid;
     public bool saveKid;
+    public EnemyDestroyer enemyDestroyer;
   
     private void Awake()
     {
@@ -29,6 +30,7 @@ public class TrustBar : MonoBehaviour
     }
     void Start()
     {
+        enemyDestroyer = GameObject.Find("EnemyDestroyer").GetComponent<EnemyDestroyer>();
         //player = GameObject.FindGameObjectWithTag("Player");
        /* trustManager = TheTrustManager.GetComponent<TrustManager>();
         greedManager = TheGreedManager.GetComponent<GreedManager>();*/
@@ -58,13 +60,32 @@ public class TrustBar : MonoBehaviour
         {
             saveKid = false;
         }
+
+
+        if (enemyDestroyer.enemyDied == true)
+        {
+            killKid = true;
+            IncreaseGreed(meterValues.meterChangeAmount);
+            Debug.Log("Greed =" + meterValues.currentGreed);
+            DecreaseTrust(meterValues.meterChangeAmount);
+            Destroy(this.gameObject);
+
+        }
+        else
+        {
+            killKid = false;
+        }
+
+
+
+
         /*if (distToPlayer <= range && Input.GetKeyDown(KeyCode.K) || Input.GetKeyDown(KeyCode.O))
         {
             killKid = true;
             DecreaseTrust(meterChangeAmount);
             IncreaseGreed(meterChangeAmount);
         }*/
-        if(this.gameObject.GetComponent<EnemyHealthManager>().health <= 25 || Input.GetKeyDown(KeyCode.O))
+       /* if(this.gameObject.GetComponent<EnemyHealthManager>().health <= 25 || Input.GetKeyDown(KeyCode.O))
         {
            DecreaseTrust(meterValues.meterChangeAmount);
             IncreaseGreed(meterValues.meterChangeAmount);
@@ -73,7 +94,7 @@ public class TrustBar : MonoBehaviour
         else
         {
             killKid = false;
-        }
+        }*/
 
     }
 
