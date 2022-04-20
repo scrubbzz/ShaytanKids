@@ -105,6 +105,7 @@ public class TrustBar : MonoBehaviour
         TheGreedManager = GameObject.Find("GreedMeter");
         trustManager = TheTrustManager.GetComponent<TrustManager>();
         greedManager = TheGreedManager.GetComponent<GreedManager>();
+        meterValues = Camera.main.GetComponent<MeterValues>();
     }
 
     private void SetTrustAndGreedMeters()

@@ -20,6 +20,7 @@ TagManager:
   - SceneSwitchPortal
   - Bizzaro
   - Projectile
+  - Manager
   layers:
   - Default
   - TransparentFX

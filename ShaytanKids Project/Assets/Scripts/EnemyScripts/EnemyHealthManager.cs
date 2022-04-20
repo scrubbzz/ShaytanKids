@@ -16,9 +16,9 @@ public class EnemyHealthManager : MonoBehaviour
     {
         DestroyEnemy();
     }
-    public void TakeDamage(int playerAttackDamage)
+    public void TakeDamage(float playerAttackDamage)
     {
-        health -= playerAttackDamage;
+        health -= (int)playerAttackDamage;
         //Debug.Log(health);
     }
 
