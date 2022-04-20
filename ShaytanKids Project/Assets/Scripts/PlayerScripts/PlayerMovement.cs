@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public ParticleSystem dust;
     public float currentMoveSpeed;
     public int maxMoveSpeed;
     public bool moveLeft;
@@ -69,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.D))
         {
+            
             moveRight = true;
             horizontalInput = 1;
         }
@@ -76,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
         {
             horizontalInput = 0;
         }
+        
         //For sprinting
       /*  if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -152,12 +155,18 @@ public class PlayerMovement : MonoBehaviour
     }
     public void FlipPlayer()
     {
+        
         if (horizontalInput > 0)
         {
+            CreateDust();
+            
+        
             transform.localScale = Vector3.one;
         }
         else if (horizontalInput < 0)
         {
+            CreateDust();
+
             transform.localScale = new Vector3(-1, 1, 1);
         }
     }
@@ -192,6 +201,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
-
+    void CreateDust()
+    {
+        if (isGrounded)
+        {
+            dust.Play();
+        }
+        
+    }
 }
