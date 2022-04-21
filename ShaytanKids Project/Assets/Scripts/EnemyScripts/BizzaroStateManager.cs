@@ -23,10 +23,11 @@ public class BizzaroStateManager : MonoBehaviour
     public GameObject player;
     public GameObject Grenade;
     public float grenadeSpeed;
-   // public GameObject bizzaro;
+    public PlayerHealth playerHealth;
+   public GameObject bizzaro;
     public Vector3 offset;
     // public Rigidbody2D grenadeRb;
-    public float playerRadius;
+    public int enemyRadius;
 
     
     
@@ -41,8 +42,9 @@ public class BizzaroStateManager : MonoBehaviour
     void Start()
     {
         /*Grenade = GameObject.FindGameObjectWithTag("Projectile");*/
-        //bizzaro = GameObject.FindGameObjectWithTag("Bizzaro");
+        bizzaro = GameObject.FindGameObjectWithTag("Bizzaro");
         player = GameObject.FindGameObjectWithTag("Player");
+        enemyRadius = 4;
         
         bizzaroPatrollingState = new BizzaroPatrollingState();
         bizzaroAttackingState = new BizzaroAttackingState(shotDelay, this);
@@ -159,7 +161,6 @@ public class BizzaroAttackingState : BizzaroState
     }
     public override void UpdateState(BizzaroStateManager bizzaroStateManager)
     {
-        bizzaroStateManager.anim.SetTrigger("mace");
 
         
         if (bizzaroStateManager.player.transform.position.x > bizzaroStateManager.transform.position.x && bizzaroStateManager.transform.localScale.x < 0 || bizzaroStateManager.player.transform.position.x < bizzaroStateManager.transform.position.x && bizzaroStateManager.transform.localScale.x > 0)
@@ -171,6 +172,7 @@ public class BizzaroAttackingState : BizzaroState
         bizzaroStateManager.rb.velocity = Vector2.zero;
         bizzaroStateManager.notShooting = false;
         DamageTarget(bizzaroStateManager);
+        BizzaroMelee(bizzaroStateManager);
         shotTimer += Time.deltaTime;
         Debug.Log("YOU ARE SHOOTING");
 
@@ -193,6 +195,17 @@ public class BizzaroAttackingState : BizzaroState
 
     }
 
+    public void BizzaroMelee(BizzaroStateManager bizzaroStateManager)
+    {
+        if(Vector2.Distance(bizzaroStateManager.bizzaro.transform.position, bizzaroStateManager.player.transform.position) <= bizzaroStateManager.enemyRadius)
+        {
+        bizzaroStateManager.anim.SetTrigger("mace");
+            bizzaroStateManager.playerHealth.TakeDamage(20);
+            
+        }
+
+
+    }
 
     public void DamageTarget(BizzaroStateManager bizzaroStateManager)
     {
