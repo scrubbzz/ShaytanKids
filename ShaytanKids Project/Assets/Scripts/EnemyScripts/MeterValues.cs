@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MeterValues : MonoBehaviour
 {
+    TrustBar trustBar;
     public int currentTrust;
     public int currentGreed;
     public int meterChangeAmount;
