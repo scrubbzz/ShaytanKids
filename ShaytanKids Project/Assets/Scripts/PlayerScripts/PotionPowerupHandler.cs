@@ -12,7 +12,7 @@ public class PotionPowerupHandler : MonoBehaviour
     public float powerUpDuration = 10;     // how long should the buff/debuff be active?
     public float powerUpStrength = 1.5f;   // how much should we increase or decrease the player's stats? (in multiples)
 
-    public ItemCounter itemDisplay;
+    //public ItemCounter itemDisplay;
 
     GameObject player;                     // references to the player's stats
     public PlayerMovement playerMovement;
@@ -49,7 +49,7 @@ public class PotionPowerupHandler : MonoBehaviour
         powerupState = nonPowered;
         powerupState.EnterState(this);
         
-        itemDisplay = GetComponent<ItemCounter>();
+        //itemDisplay = GetComponent<ItemCounter>();
 
         player = GameObject.FindWithTag("Player");
         playerMovement = player.GetComponent<PlayerMovement>();

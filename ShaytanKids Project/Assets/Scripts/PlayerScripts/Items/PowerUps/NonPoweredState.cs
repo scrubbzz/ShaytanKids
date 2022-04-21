@@ -21,8 +21,8 @@ public class NonPoweredState : PowerupState
     {
         if (Input.GetKeyDown(KeyCode.Comma) && ItemCounter.potionCount > 0)
         {
-                ItemCounter.potionCount--; 
-                manager.itemDisplay.UpdateUI();
+            ItemCounter.potionCount--;
+            ItemCounter.itemCounter.UpdateUI();
 
 
             // returns true or false depending on whether the likelihood of being a good potion turned out greater.

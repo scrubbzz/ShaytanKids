@@ -14,6 +14,8 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealthRegenTimer;
     public bool tookDamage;
     public int regenRate;
+
+    GameoverScreen gameoverScreen;
     
     void Start()
     {
@@ -38,12 +40,10 @@ public class PlayerHealth : MonoBehaviour
         }*/
         StartRegenTimer();
         RegenerateHealth();
+
         if (currentHealth <= 0)
         {
-            // death animation 
-            CheckpointManager.Respawn();
-            // respawn animation 
-            currentHealth = maxHealth;
+            PlayerDeath();
         }
 
         healthBarManager.playerHealth.value = currentHealth;
@@ -90,5 +90,13 @@ public class PlayerHealth : MonoBehaviour
             currentHealthRegenTimer = healthRegenTimer;
             Debug.Log("you got shot");
         }
+    }
+
+    void PlayerDeath()
+    {
+        // death animation 
+        gameoverScreen.GameOverSceneSwitch();
+
+        // respawn animation in the checkpointmanager
     }
 }
