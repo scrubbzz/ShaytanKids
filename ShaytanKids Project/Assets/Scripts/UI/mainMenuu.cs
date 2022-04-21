@@ -32,5 +32,10 @@ public class mainMenuu : MonoBehaviour
         SceneManager.LoadScene("TutorialLevel");
 
     }
-    
+    public void GoToOptionsmenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("pauseScene");
+    }
+
 }

@@ -64,6 +64,11 @@ public class testpausescript2 : MonoBehaviour
         settingsMenu.SetActive(false);
         pauseMenu.SetActive(true);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
 
 
