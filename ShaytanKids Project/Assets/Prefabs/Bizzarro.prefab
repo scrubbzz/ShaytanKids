@@ -221,12 +221,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 815995909073827644}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6d5c9bc4163a6854d99d3cf4f71023d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mustPatrol: 0
+  mustTurn: 0
+  notShooting: 0
   rb: {fileID: 815995909073827645}
   range: 7
   timeBtwShots: 0.5
@@ -351,6 +353,10 @@ PrefabInstance:
     - target: {fileID: 1853833823357678310, guid: d586855360eef794192cf9de00bb1329, type: 3}
       propertyPath: m_Name
       value: Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853833823357678310, guid: d586855360eef794192cf9de00bb1329, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1853833823357678314, guid: d586855360eef794192cf9de00bb1329, type: 3}
       propertyPath: m_RootOrder
