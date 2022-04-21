@@ -69,6 +69,12 @@ public class BizzaroStateManager : MonoBehaviour
     {
         currentState = desiredState;
     }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position,enemyRadius);
+
+    }
 
     public GameObject Spawnbullet(BizzaroStateManager bizzaroStateManager)
     {
@@ -161,7 +167,6 @@ public class BizzaroAttackingState : BizzaroState
     }
     public override void UpdateState(BizzaroStateManager bizzaroStateManager)
     {
-
         
         if (bizzaroStateManager.player.transform.position.x > bizzaroStateManager.transform.position.x && bizzaroStateManager.transform.localScale.x < 0 || bizzaroStateManager.player.transform.position.x < bizzaroStateManager.transform.position.x && bizzaroStateManager.transform.localScale.x > 0)
         {
@@ -169,10 +174,11 @@ public class BizzaroAttackingState : BizzaroState
         }
 
         bizzaroStateManager.mustPatrol = false;
+        bizzaroStateManager.anim.SetBool("walk", false);
         bizzaroStateManager.rb.velocity = Vector2.zero;
         bizzaroStateManager.notShooting = false;
         DamageTarget(bizzaroStateManager);
-        BizzaroMelee(bizzaroStateManager);
+      //  BizzaroMelee(bizzaroStateManager);
         shotTimer += Time.deltaTime;
         Debug.Log("YOU ARE SHOOTING");
 
@@ -195,7 +201,7 @@ public class BizzaroAttackingState : BizzaroState
 
     }
 
-    public void BizzaroMelee(BizzaroStateManager bizzaroStateManager)
+    /*public void BizzaroMelee(BizzaroStateManager bizzaroStateManager)
     {
         if(Vector2.Distance(bizzaroStateManager.bizzaro.transform.position, bizzaroStateManager.player.transform.position) <= bizzaroStateManager.enemyRadius)
         {
@@ -206,6 +212,8 @@ public class BizzaroAttackingState : BizzaroState
 
 
     }
+*/
+   
 
     public void DamageTarget(BizzaroStateManager bizzaroStateManager)
     {
@@ -215,8 +223,16 @@ public class BizzaroAttackingState : BizzaroState
             directionToPlayer = bizzaroStateManager.player.transform.position - bizzaroStateManager.transform.position;
         }
 
-        if(bizzaroStateManager.player != null && shotTimer >= bizzaroStateManager.shotDelay)
+        if (Vector2.Distance(bizzaroStateManager.bizzaro.transform.position, bizzaroStateManager.player.transform.position) <= bizzaroStateManager.enemyRadius)
         {
+            bizzaroStateManager.anim.SetTrigger("mace");
+            bizzaroStateManager.playerHealth.TakeDamage(20);
+
+        }
+
+        if (bizzaroStateManager.player != null && shotTimer >= bizzaroStateManager.shotDelay)
+        {
+            bizzaroStateManager.anim.SetTrigger("mace");
             GameObject thebullet = bizzaroStateManager.Spawnbullet(bizzaroStateManager);
             Rigidbody2D rb = thebullet.GetComponent<Rigidbody2D>();
 

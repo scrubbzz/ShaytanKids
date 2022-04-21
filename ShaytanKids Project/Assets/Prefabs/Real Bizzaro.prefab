@@ -206,20 +206,22 @@ MonoBehaviour:
   mustTurn: 0
   distToPlayer: 0
   notShooting: 0
-  range: 9
-  shotDelay: 0
-  walkspeed: 150
+  range: 7
+  shotDelay: 0.6
+  walkspeed: 200
   playerDirection: {x: 0, y: 0, z: 0}
   groundcheckpos: {fileID: 8701728919875818635}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   bodycollider: {fileID: 8701728919058852731}
-  player: {fileID: 0}
-  Grenade: {fileID: 5740009558131552698, guid: 198323cf3d170164fadbd1c2c2dcb38d, type: 3}
-  grenadeSpeed: 0
+  player: {fileID: 4756443154841981623, guid: 4962cda1a66b1e54ea3cd2d376f77c8c, type: 3}
+  Grenade: {fileID: 5740009558131552698, guid: b5944f0ca9cf1dc49a1fedb4f1f74c34, type: 3}
+  grenadeSpeed: 4
+  playerHealth: {fileID: 0}
+  bizzaro: {fileID: 0}
   offset: {x: 0, y: 3.1, z: 0}
-  playerRadius: 0
+  enemyRadius: 5
   anim: {fileID: 8327225727392637993}
 --- !u!1 &8701728919571750510
 GameObject:
