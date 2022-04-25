@@ -12,7 +12,7 @@ public class EnemyDestroyer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        theEnemySpawner = GameObject.Find("EnemySpawner");
+        theEnemySpawner = GameObject.FindGameObjectWithTag("EnemySpawner");
         enemySpawner = theEnemySpawner.GetComponent<EnemySpawner>();
     }
 
