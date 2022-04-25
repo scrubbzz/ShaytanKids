@@ -78,7 +78,7 @@ public class PoweredUpState : PowerupState
 
                 Debug.Log("Something went wrong with the powerup. Refunding your potion.");
                 ItemCounter.potionCount++;
-                manager.itemDisplay.UpdateUI();
+                ItemCounter.itemCounter.UpdateUI();
                 break;
         }
 
