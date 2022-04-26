@@ -8,11 +8,12 @@ public class EnemyDestroyer : MonoBehaviour
     public EnemySpawner enemySpawner;
     public float timer = 3;
     public bool enemyDied;
+    public bool kidDied;
    
     // Start is called before the first frame update
     void Start()
     {
-        theEnemySpawner = GameObject.Find("EnemySpawner");
+        theEnemySpawner = GameObject.FindGameObjectWithTag("EnemySpawner");
         enemySpawner = theEnemySpawner.GetComponent<EnemySpawner>();
     }
 
@@ -23,6 +24,7 @@ public class EnemyDestroyer : MonoBehaviour
         if(timer <= 0)
         {
             enemyDied = false;
+            kidDied = false;
         }
         DestroyDeadEnemies();
     }
@@ -39,13 +41,23 @@ public class EnemyDestroyer : MonoBehaviour
                     enemySpawner.enemies.RemoveAt(i);
                     enemySpawner.spawnCount--;
                     enemyDied = true;
-                    timer = 3;
+                    timer = 0.23f;
 
 
                 }
             }
             
         }
+
+        for (int i = 0; i < enemySpawner.shaytanKids.Count; i++)
+        {
+            if(enemySpawner.shaytanKids[i].GetComponent<EnemyHealthManager>().health <= 0)
+            {
+                kidDied = true;
+                timer = 0.23f;
+            }
+        }
     }
+
 
 }

@@ -9,7 +9,7 @@ using UnityEngine;
 public class CheckpointManager : MonoBehaviour
 {
 
-    static GameObject player;
+    public static GameObject player;
 
     public static Vector2 playerSpawnPosition;
     [SerializeField] static Vector2 defaultSpawnpoint; // ideally this would be set to the player's position at the start of the level
@@ -30,10 +30,11 @@ public class CheckpointManager : MonoBehaviour
     public static void Respawn()
     {
         if (playerSpawnPosition == null) // just to make sure a spawn point exists 
-
             playerSpawnPosition = defaultSpawnpoint;
 
         player.transform.position = playerSpawnPosition;
+        // call player respawn animation here
+
         Debug.Log("Player respawned at " + playerSpawnPosition + "."); 
     }
 

@@ -17,7 +17,7 @@ public class TheLightManager : MonoBehaviour
     void Start()
     {
         light = GetComponent<Light2D>();
-        theEnemySpawner = GameObject.Find("EnemySpawner");
+        theEnemySpawner = GameObject.FindGameObjectWithTag("EnemySpawner");
         enemySpawner = theEnemySpawner.GetComponent<EnemySpawner>();
     }
    
@@ -28,6 +28,15 @@ public class TheLightManager : MonoBehaviour
         IncreaseLight();
         DecreaseLight();
         MaintainLight();
+        Addlight();
+    }
+    public void Addlight()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            light.pointLightInnerRadius += lightAddAmount * Time.deltaTime;
+            light.pointLightOuterRadius += lightAddAmount * 2 * Time.deltaTime;
+        }
     }
     public void IncreaseLight()
     {
