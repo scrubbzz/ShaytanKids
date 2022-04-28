@@ -15,7 +15,7 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField] float maxSpawnDelay = 15; 
     [SerializeField] float minSpawnDelay = 10;
 
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine(SpawnTimer());
     }

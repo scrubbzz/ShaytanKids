@@ -15,10 +15,13 @@ public class PlayerHealth : MonoBehaviour
     public bool tookDamage;
     public int regenRate;
 
+    float deathAnimLength;
     GameoverScreen gameoverScreen;
     
     void Start()
     {
+        gameoverScreen = GameObject.Find("GameManager").GetComponent<GameoverScreen>();
+
         healthBar = GameObject.Find("HealthBar");
         healthBarManager = healthBar.GetComponent<HealthBarManager>();
         maxHealth = 100;
@@ -32,6 +35,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Update()
     {
+
         /*if (Input.GetKeyDown(KeyCode.Z))
         {
             TakeDamage(20);
@@ -41,9 +45,8 @@ public class PlayerHealth : MonoBehaviour
         StartRegenTimer();
         RegenerateHealth();
 
-        if (currentHealth <= 0)
-        {
-            PlayerDeath();
+        if (currentHealth <= 0){
+            StartCoroutine(PlayerDeath());
         }
 
         healthBarManager.playerHealth.value = currentHealth;
@@ -92,11 +95,11 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void PlayerDeath()
+    IEnumerator PlayerDeath()
     {
-        // death animation 
-        gameoverScreen.GameOverSceneSwitch();
+        // (death animation here)
+        yield return new WaitForSeconds(deathAnimLength); // wait for death animation to finish.
 
-        // respawn animation in the checkpointmanager
+        gameoverScreen.GameOverSceneSwitch(); // switches to deathScene and waits for a button prompt.
     }
 }

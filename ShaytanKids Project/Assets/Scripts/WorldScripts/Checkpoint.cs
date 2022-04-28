@@ -9,6 +9,7 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     Vector2 checkpointPosition;
+    bool hasBeenUsed = false;
 
     void Start()
     {
@@ -17,10 +18,10 @@ public class Checkpoint : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")
-            && CheckpointManager.playerSpawnPosition != checkpointPosition)
+        if (collision.CompareTag("Player") && !hasBeenUsed)
         {
             CheckpointManager.SetRespawn(checkpointPosition);
+            hasBeenUsed = true;
         }
     }
 

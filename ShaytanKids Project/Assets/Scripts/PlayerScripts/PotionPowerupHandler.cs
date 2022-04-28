@@ -9,15 +9,21 @@ using UnityEngine;
 /// </summary>
 public class PotionPowerupHandler : MonoBehaviour
 {
+
+#region
     public float powerUpDuration = 10;     // how long should the buff/debuff be active?
     public float powerUpStrength = 1.5f;   // how much should we increase or decrease the player's stats? (in multiples)
 
-    //public ItemCounter itemDisplay;
 
-    GameObject player;                     // references to the player's stats
-    public PlayerMovement playerMovement;
+    GameObject player;                     
+    public PlayerMovement playerMovement;  // references to the player's stats
     public PlayerAttack playerAttack;
     public PlayerShoot playerShoot;
+
+    public SpriteRenderer playerSprite;
+    public Color poweredUpColour;
+    public Color poweredDownColour;        // set these in the inspector for best results.
+
 
     public enum PowerUpType                // each possible powerup type (corresponds to stat buffs / debuffs).
     {
@@ -27,36 +33,41 @@ public class PotionPowerupHandler : MonoBehaviour
         firingBoost = 3
     }
     public PowerUpType powerUpType;
-    public int numberOfStates = 4;
+    [HideInInspector] public int numberOfStates = 4;
+
 
     public MeterManager meters;
-    public int maxRandomness;             // this represents the amount of randomness involved in
+    public int maxRandomness;             // < this represents the amount of randomness involved in
                                           // deciding the state switching to poweredUp or depowered.
-
-
-    public float contingencyTimer;
+    //public float contingencyTimer;
 
     PowerupState powerupState;           
 
     public NonPoweredState nonPowered = new NonPoweredState();
     public PoweredUpState poweredUp = new PoweredUpState();
     public DepoweredState depowered = new DepoweredState();
-
+#endregion
 
     // ensure we have our powerup state and all references set.
     void Start()
     {
-        powerupState = nonPowered;
-        powerupState.EnterState(this);
-        
-        //itemDisplay = GetComponent<ItemCounter>();
 
         player = GameObject.FindWithTag("Player");
+
         playerMovement = player.GetComponent<PlayerMovement>();
         playerAttack = player.GetComponent<PlayerAttack>();
         playerShoot = player.GetComponent<PlayerShoot>();
 
+        playerSprite = player.GetComponent<SpriteRenderer>();
+        //poweredUpColour = new Color(1, 0.15f, 0.15f);
+        //poweredDownColour = new Color(0.15f, 0.15f, 1);   
+
         meters = player.GetComponent<MeterManager>(); 
+
+
+        powerupState = nonPowered;
+        powerupState.EnterState(this);
+
     }
 
     void Update()

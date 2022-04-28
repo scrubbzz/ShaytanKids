@@ -7,6 +7,8 @@ public class PoweredUpState : PowerupState
     public override void EnterState(PotionPowerupHandler manager)
     {
         Debug.Log("Entered powered up mode.");
+        manager.playerSprite.color = manager.poweredUpColour;
+
         manager.StartCoroutine(BoostPlayer(manager));
         //manager.contingencyTimer = 0;
     }
