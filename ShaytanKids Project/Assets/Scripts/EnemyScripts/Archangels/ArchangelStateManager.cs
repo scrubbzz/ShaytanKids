@@ -38,9 +38,9 @@ public class ArchangelStateManager : MonoBehaviour
 
         flightPositions = new Vector3[]
         {
-            new Vector3(-15, 0, 0),
-            new Vector3(0, 10, 0),
-            new Vector3 (15, -10, 0)
+            new Vector3(-10, 0, 0),
+            new Vector3(0, 1, 0),
+            new Vector3 (10, -1, 0)
         };
 
         movementSpeed = 10;
