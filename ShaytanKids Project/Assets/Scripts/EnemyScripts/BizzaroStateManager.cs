@@ -44,6 +44,7 @@ public class BizzaroStateManager : MonoBehaviour
         /*Grenade = GameObject.FindGameObjectWithTag("Projectile");*/
         bizzaro = GameObject.FindGameObjectWithTag("Bizzaro");
         player = GameObject.FindGameObjectWithTag("Player");
+        playerHealth = player.GetComponent<PlayerHealth>();
         enemyRadius = 4;
 
         bizzaroPatrollingState = new BizzaroPatrollingState();
@@ -191,10 +192,11 @@ public class BizzaroAttackingState : BizzaroState
             directionToPlayer = bizzaroStateManager.player.transform.position - bizzaroStateManager.transform.position;
         }
 
-        if (Vector2.Distance(bizzaroStateManager.bizzaro.transform.position, bizzaroStateManager.player.transform.position) <= bizzaroStateManager.range)
+        if (bizzaroStateManager.distToPlayer <= bizzaroStateManager.range)
         {
             if (meleeTimer > 1)
             {
+
                 bizzaroStateManager.anim.SetTrigger("mace");
                 bizzaroStateManager.playerHealth.TakeDamage(10);
                 bizzaroStateManager.playerHealth.tookDamage = true;

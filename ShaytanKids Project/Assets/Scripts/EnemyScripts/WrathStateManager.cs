@@ -42,7 +42,7 @@ public class WrathStateManager : MonoBehaviour
         wrathRadius = 4;
         wrathPatrollingState = new WrathPatrollingState();
         WrathChasingState = new WrathChasingState();
-        wrathAttackingState = new WrathAttackingState(shotDelay, this);
+        wrathAttackingState = new WrathAttackingState();
         notHitting = true;
         mustPatrol = true;
         currentState = wrathPatrollingState;
@@ -137,7 +137,7 @@ public class WrathChasingState : WrathState
     {
         wrathStateManager.anim.SetBool("moving", true);
 
-        if (wrathStateManager.player.transform.position.x > wrathStateManager.transform.position.x && wrathStateManager.transform.localScale.x < 0 || wrathStateManager.player.transform.position.x < wrathStateManager.transform.position.x && wrathStateManager.transform.localScale.x > 0)
+        if (wrathStateManager.player.transform.position.x > wrathStateManager.transform.position.x && wrathStateManager.transform.localScale.x < 1 || wrathStateManager.player.transform.position.x < wrathStateManager.transform.position.x && wrathStateManager.transform.localScale.x > 1)
         {
 
             wrathStateManager.wrathPatrollingState.Flip(wrathStateManager);
@@ -177,11 +177,7 @@ public class WrathAttackingState : WrathState
     public float meleeTimer;
     public Vector2 directionToPlayer;
 
-    public WrathAttackingState(float shotDelay, WrathStateManager wrathStateManager)
-    {
-        wrathStateManager.shotDelay = shotDelay;
-
-    }
+    
     public override void UpdateState(WrathStateManager wrathStateManager)
     {
         wrathStateManager.anim.SetBool("moving", false);
@@ -229,9 +225,9 @@ public class WrathAttackingState : WrathState
             directionToPlayer = wrathStateManager.player.transform.position - wrathStateManager.transform.position;
         }
 
-        if (Vector2.Distance(wrathStateManager.wrath.transform.position, wrathStateManager.player.transform.position) <= wrathStateManager.wrathRadius)
+        if (wrathStateManager.distToPlayer <= wrathStateManager.wrathRadius)
         {
-            if (meleeTimer > 2)
+            if (meleeTimer > 1)
             {
                 wrathStateManager.anim.SetTrigger("slash");
                 wrathStateManager.playerHealth.TakeDamage(30);
