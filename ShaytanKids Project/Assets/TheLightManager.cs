@@ -11,7 +11,6 @@ public class TheLightManager : MonoBehaviour
     public float lightAddAmount;
     public GameObject theEnemySpawner;
     public EnemySpawner enemySpawner;
-    public TrustBar trustBar;
     //public TrustBar trustBar;
     // Start is called before the first frame update
     void Start()

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MeterValues : MonoBehaviour
 {
-    public GameObject[] shaytanKids;
-    public EnemyDestroyer enemyDestroyer;
+    public GameObject[] shaytanKids;//So each of the kids can change the values of the greed and trust meters.
+    public EnemyDestroyer enemyDestroyer;//To check if the a kid died.
     public GameObject theTrustManager;
     public GameObject theGreedManager;
     public TrustManager trustManager;
@@ -49,8 +49,8 @@ public class MeterValues : MonoBehaviour
 
             if (shaytanKids[i].GetComponent<TrustBar>().killKid == true)
             {
-                IncreaseGreed(meterChangeAmount);
-                DecreaseTrust(meterChangeAmount);
+                IncreaseGreed(meterChangeAmount * Mathf.Sqrt(Time.deltaTime));
+                DecreaseTrust(meterChangeAmount * Mathf.Sqrt(Time.deltaTime));
             }
         }
 
@@ -72,8 +72,8 @@ public class MeterValues : MonoBehaviour
 
     void IncreaseGreed(float killKids)
     {
-        currentGreed += killKids * Time.deltaTime;
-        if (currentGreed > maxGreed)
+        currentGreed += killKids * Mathf.Sqrt(Time.deltaTime);
+        if(currentGreed > maxGreed)
         {
             currentGreed = maxGreed;
         }
@@ -83,20 +83,19 @@ public class MeterValues : MonoBehaviour
         thePlayerLight.light.pointLightOuterRadius += thePlayerLight.lightAddAmount * 2;
 
     }
-    void DecreaseTrust(float saveKids)
+    void DecreaseGreed(float killKids)
     {
-        currentTrust -= saveKids * Time.deltaTime;
-        if (currentTrust < 0)
+        currentGreed -= killKids * Mathf.Sqrt(Time.deltaTime);
+        if (currentGreed < 0)
         {
-            currentTrust = 0;
+            currentGreed = 0;
         }
-        trustManager.SetBar((int)currentTrust);
+        greedManager.SetBar((int)currentGreed);
 
     }
-
     void IncreaseTrust(float saveKids)
     {
-        currentTrust += saveKids * Time.deltaTime;
+        currentTrust += saveKids * Mathf.Sqrt(Time.deltaTime);
         if (currentTrust > maxTrust)
         {
             currentTrust = maxTrust;
@@ -105,17 +104,19 @@ public class MeterValues : MonoBehaviour
 
     }
 
-    void DecreaseGreed(float killKids)
+    void DecreaseTrust(float saveKids)
     {
-        currentGreed -= killKids * Time.deltaTime;
-        if (currentGreed < 0)
+        currentTrust -= saveKids * Mathf.Sqrt(Time.deltaTime);
+        if (currentTrust < 0)
         {
-            currentGreed = 0;
+            currentTrust = 0;
         }
-        greedManager.SetBar((int)currentGreed);
+        trustManager.SetBar((int)currentTrust);
 
     }
 
+   
+   
 
 
 }
