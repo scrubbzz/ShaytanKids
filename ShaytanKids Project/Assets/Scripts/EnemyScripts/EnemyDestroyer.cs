@@ -20,12 +20,12 @@ public class EnemyDestroyer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
+        timer -= Mathf.Sqrt(Time.deltaTime);
         if(timer <= 0)
         {
             enemyDied = false;
             kidDied = false;
-        }
+        }   
         DestroyDeadEnemies();
     }
     public void DestroyDeadEnemies()
@@ -41,7 +41,7 @@ public class EnemyDestroyer : MonoBehaviour
                     enemySpawner.enemies.RemoveAt(i);
                     enemySpawner.spawnCount--;
                     enemyDied = true;
-                    timer = 0.23f;
+                    timer = 0.5f;
 
 
                 }

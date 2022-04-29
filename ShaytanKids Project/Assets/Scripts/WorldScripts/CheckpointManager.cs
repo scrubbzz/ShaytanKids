@@ -12,25 +12,30 @@ public class CheckpointManager : MonoBehaviour
     public static GameObject player;
 
     public static Vector2 playerSpawnPosition;
-    [SerializeField] static Vector2 defaultSpawnpoint; // ideally this would be set to the player's position at the start of the level
+    static Vector2 defaultSpawnpoint; // meant to be set to the player's position at the start of the level
 
     public static CheckpointManager manager;
-    private void Awake()
+
+    void Awake()  //singleton pattern. make sure there's only one manager
     {
         if (manager == null)
              manager = this; 
         else
              Destroy(this); 
+    }
 
-
+    void Start()
+    { 
         player = GameObject.FindGameObjectWithTag("Player");
         defaultSpawnpoint = player.transform.position;
+        
+        Respawn();  // respawn should be called when the scene is loaded
     }
 
     public static void Respawn()
     {
-        if (playerSpawnPosition == null) // just to make sure a spawn point exists 
-            playerSpawnPosition = defaultSpawnpoint;
+        if (playerSpawnPosition == Vector2.zero)
+                playerSpawnPosition = defaultSpawnpoint;
 
         player.transform.position = playerSpawnPosition;
         // call player respawn animation here

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BizzaroStateManager : MonoBehaviour
 {
     public Rigidbody2D rb;
@@ -21,23 +22,22 @@ public class BizzaroStateManager : MonoBehaviour
     // public ChasingState chasingState;
     public BizzaroAttackingState bizzaroAttackingState;
     public GameObject player;
-    public GameObject Grenade;
-    public float grenadeSpeed;
+    /*public GameObject Grenade;
+    public float grenadeSpeed;*/
     public PlayerHealth playerHealth;
-   public GameObject bizzaro;
-    public Vector3 offset;
+    public GameObject bizzaro;
     // public Rigidbody2D grenadeRb;
     public int enemyRadius;
 
-    
-    
-    
-   [SerializeField] public Animator anim;
+
+
+
+    [SerializeField] public Animator anim;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        
+
     }
     void Start()
     {
@@ -45,22 +45,22 @@ public class BizzaroStateManager : MonoBehaviour
         bizzaro = GameObject.FindGameObjectWithTag("Bizzaro");
         player = GameObject.FindGameObjectWithTag("Player");
         enemyRadius = 4;
-        
+
         bizzaroPatrollingState = new BizzaroPatrollingState();
-        bizzaroAttackingState = new BizzaroAttackingState(shotDelay, this);
+        bizzaroAttackingState = new BizzaroAttackingState();
         notShooting = true;
         mustPatrol = true;
         currentState = bizzaroPatrollingState;
     }
 
-   
+
     void Update()
     {
-      //  playerDirection = player.transform.position - bizzaro.transform.position;
+
         distToPlayer = Vector2.Distance(this.transform.position, player.transform.position);
         currentState.UpdateState(this);
-       
-        
+
+
 
     }
 
@@ -72,15 +72,15 @@ public class BizzaroStateManager : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position,enemyRadius);
+        Gizmos.DrawWireSphere(transform.position, enemyRadius);
 
     }
 
-    public GameObject Spawnbullet(BizzaroStateManager bizzaroStateManager)
-    {
-        GameObject thebullet = Instantiate(bizzaroStateManager.Grenade, (Vector2)bizzaroStateManager.transform.position + bizzaroAttackingState.directionToPlayer.normalized, Quaternion.identity);
-        return thebullet;
-    }
+    /* public GameObject Spawnbullet(BizzaroStateManager bizzaroStateManager)
+     {
+         GameObject thebullet = Instantiate(bizzaroStateManager.Grenade, (Vector2)bizzaroStateManager.transform.position + bizzaroAttackingState.directionToPlayer.normalized, Quaternion.identity);
+         return thebullet;
+     }*/
     private void FixedUpdate()
     {
         if (mustPatrol)
@@ -88,28 +88,12 @@ public class BizzaroStateManager : MonoBehaviour
             mustTurn = !Physics2D.OverlapCircle(groundcheckpos.position, 0.1f, groundLayer);
         }
     }
-
-
-   /* public GameObject SpawnBullet(BizzaroStateManager attackingState)
-    {
-
-        GameObject bullet = Instantiate(Grenade, transform.position + offset , Quaternion.identity);
-        return bullet;
-    }
-*/
 }
 
 
 public abstract class BizzaroState
 {
-    public float speed = 10f;
 
-    public float playerX;
-    public float bizzaroX;
-    public float dist;
-    public float nextX;
-    public float baseY;
-    public float height;
 
     public abstract void UpdateState(BizzaroStateManager bizzaroStateManager);
 
@@ -120,8 +104,8 @@ public class BizzaroPatrollingState : BizzaroState
 
     public override void UpdateState(BizzaroStateManager bizzaroStateManager)
     {
-         bizzaroStateManager.anim.SetBool("walk", true);
-       
+        bizzaroStateManager.anim.SetBool("walk", true);
+
         if (bizzaroStateManager.mustPatrol)
         {
             if (bizzaroStateManager.bodycollider.IsTouchingLayers(bizzaroStateManager.groundLayer))
@@ -139,17 +123,17 @@ public class BizzaroPatrollingState : BizzaroState
             Debug.Log("you are attacking now");
 
 
-        } 
-        
-            
+        }
+
+
     }
 
     public void Flip(BizzaroStateManager bizzaroStateManager)
     {
-        
+
         bizzaroStateManager.transform.localScale = new Vector2(bizzaroStateManager.transform.localScale.x * -1, bizzaroStateManager.transform.localScale.y);
         bizzaroStateManager.walkspeed *= -1;
-        
+
     }
 
 }
@@ -158,16 +142,13 @@ public class BizzaroPatrollingState : BizzaroState
 
 public class BizzaroAttackingState : BizzaroState
 {
-    public float shotTimer;
+    public float meleeTimer;
     public Vector2 directionToPlayer;
 
-    public BizzaroAttackingState(float shotDelay, BizzaroStateManager bizzaroStateManager)
-    {
-        bizzaroStateManager.shotDelay = shotDelay;
-    }
+
     public override void UpdateState(BizzaroStateManager bizzaroStateManager)
     {
-        
+
         if (bizzaroStateManager.player.transform.position.x > bizzaroStateManager.transform.position.x && bizzaroStateManager.transform.localScale.x < 0 || bizzaroStateManager.player.transform.position.x < bizzaroStateManager.transform.position.x && bizzaroStateManager.transform.localScale.x > 0)
         {
             bizzaroStateManager.bizzaroPatrollingState.Flip(bizzaroStateManager);
@@ -178,8 +159,7 @@ public class BizzaroAttackingState : BizzaroState
         bizzaroStateManager.rb.velocity = Vector2.zero;
         bizzaroStateManager.notShooting = false;
         DamageTarget(bizzaroStateManager);
-      //  BizzaroMelee(bizzaroStateManager);
-        shotTimer += Time.deltaTime;
+        meleeTimer += Time.deltaTime;
         Debug.Log("YOU ARE SHOOTING");
 
         if (bizzaroStateManager.distToPlayer >= bizzaroStateManager.range)
@@ -188,62 +168,56 @@ public class BizzaroAttackingState : BizzaroState
             bizzaroStateManager.mustPatrol = true;
             bizzaroStateManager.ChangeState(bizzaroStateManager.bizzaroPatrollingState);
             Debug.Log("back to patrolling");
-            
+
 
         }
-      
-       
-            
 
 
-        
+
+
+
+
 
 
     }
 
-    /*public void BizzaroMelee(BizzaroStateManager bizzaroStateManager)
-    {
-        if(Vector2.Distance(bizzaroStateManager.bizzaro.transform.position, bizzaroStateManager.player.transform.position) <= bizzaroStateManager.enemyRadius)
-        {
-        bizzaroStateManager.anim.SetTrigger("mace");
-            bizzaroStateManager.playerHealth.TakeDamage(20);
-            
-        }
 
-
-    }
-*/
-   
 
     public void DamageTarget(BizzaroStateManager bizzaroStateManager)
     {
-        if(bizzaroStateManager.player != null)
+        if (bizzaroStateManager.player != null)
         {
 
             directionToPlayer = bizzaroStateManager.player.transform.position - bizzaroStateManager.transform.position;
         }
 
-        if (Vector2.Distance(bizzaroStateManager.bizzaro.transform.position, bizzaroStateManager.player.transform.position) <= bizzaroStateManager.enemyRadius)
+        if (Vector2.Distance(bizzaroStateManager.bizzaro.transform.position, bizzaroStateManager.player.transform.position) <= bizzaroStateManager.range)
         {
-            bizzaroStateManager.anim.SetTrigger("mace");
-            bizzaroStateManager.playerHealth.TakeDamage(20);
+            if (meleeTimer > 1)
+            {
+                bizzaroStateManager.anim.SetTrigger("mace");
+                bizzaroStateManager.playerHealth.TakeDamage(10);
+                bizzaroStateManager.playerHealth.tookDamage = true;
+                bizzaroStateManager.playerHealth.currentHealthRegenTimer = bizzaroStateManager.playerHealth.healthRegenTimer;
+                meleeTimer = 0;
+            }
 
         }
 
-        if (bizzaroStateManager.player != null && shotTimer >= bizzaroStateManager.shotDelay)
-        {
-            bizzaroStateManager.anim.SetTrigger("mace");
-            GameObject thebullet = bizzaroStateManager.Spawnbullet(bizzaroStateManager);
-            Rigidbody2D rb = thebullet.GetComponent<Rigidbody2D>();
+        /*  if (bizzaroStateManager.player != null && shotTimer >= bizzaroStateManager.shotDelay)
+          {
+              bizzaroStateManager.anim.SetTrigger("mace");
+              GameObject thebullet = bizzaroStateManager.Spawnbullet(bizzaroStateManager);
+              Rigidbody2D rb = thebullet.GetComponent<Rigidbody2D>();
 
 
-            Vector2 direction = directionToPlayer * bizzaroStateManager.grenadeSpeed;
-            rb.velocity = direction;
-            rb.transform.up = direction;
+              Vector2 direction = directionToPlayer * bizzaroStateManager.grenadeSpeed;
+              rb.velocity = direction;
+              rb.transform.up = direction;
 
-            shotTimer = 0f;
+              shotTimer = 0f;
 
-        }
+          }*/
 
     }
 
@@ -256,29 +230,29 @@ public class BizzaroAttackingState : BizzaroState
             var playerHealth = PlayerCollider.GetComponent<PlayerHealth>();
             playerHealth.TakeDamage(20);
             bizzaroStateManager.anim.SetTrigger("");
-
+ 
         }
     }
-        
+ 
 */
 
-   /* public void Shoot(BizzaroStateManager bizzaroStateManager)
-    {
-        bizzaroStateManager.SpawnBullet(bizzaroStateManager);
-        bizzaroStateManager.shotdelay = 2;
-    }
-*/
-/*   public void GrenadeMovement(BizzaroStateManager bizzaroStateManager)
-    {
-       bizzaroStateManager.grenadeRb = bizzaroStateManager.Grenade.GetComponent<Rigidbody2D>();
-       bizzaroStateManager.grenadeRb.AddForce(bizzaroStateManager.playerDirection, ForceMode2D.Impulse); 
-        
-
-        
-    }*/
+    /* public void Shoot(BizzaroStateManager bizzaroStateManager)
+     {
+         bizzaroStateManager.SpawnBullet(bizzaroStateManager);
+         bizzaroStateManager.shotdelay = 2;
+     }
+ */
+    /*   public void GrenadeMovement(BizzaroStateManager bizzaroStateManager)
+        {
+           bizzaroStateManager.grenadeRb = bizzaroStateManager.Grenade.GetComponent<Rigidbody2D>();
+           bizzaroStateManager.grenadeRb.AddForce(bizzaroStateManager.playerDirection, ForceMode2D.Impulse); 
 
 
-   
+
+        }*/
+
+
+
 }
 
 

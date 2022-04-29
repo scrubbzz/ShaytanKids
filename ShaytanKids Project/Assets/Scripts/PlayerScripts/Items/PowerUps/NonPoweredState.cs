@@ -13,6 +13,8 @@ public class NonPoweredState : PowerupState
     public override void EnterState(PotionPowerupHandler manager)
     {
         Debug.Log("Returned to non powered mode.");
+        manager.playerSprite.color = Color.white;
+
         int selectPowerUp = Random.Range(0, manager.numberOfStates);
         manager.powerUpType = (PotionPowerupHandler.PowerUpType)selectPowerUp; // need to cast the random number to the enum type here.
     } 

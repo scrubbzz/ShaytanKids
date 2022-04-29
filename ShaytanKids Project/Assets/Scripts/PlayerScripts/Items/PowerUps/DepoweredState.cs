@@ -7,6 +7,7 @@ public class DepoweredState : PowerupState
     public override void EnterState(PotionPowerupHandler manager)
     {
         Debug.Log("Entered depowered mode.");
+        manager.playerSprite.color = manager.poweredDownColour;
         manager.StartCoroutine(DebuffPlayer(manager));
     }
 
