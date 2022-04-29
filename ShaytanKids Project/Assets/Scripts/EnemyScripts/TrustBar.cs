@@ -54,9 +54,9 @@ public class TrustBar : MonoBehaviour
         if (distToPlayer <= range && Input.GetKeyDown(KeyCode.L))
         {
             saveKid = true;
+            Debug.Log("Trust =" + meterValues.currentTrust);
             
-            
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, 0.5f);
         }
         else
         {
@@ -68,9 +68,9 @@ public class TrustBar : MonoBehaviour
         {
             killKid = true;
            
-            Debug.Log("Greed =" + meterValues.currentGreed);
             //DecreaseTrust(meterValues.meterChangeAmount);
             Destroy(this.gameObject, 1f);
+            Debug.Log("Greed =" + meterValues.currentGreed);
 
         }
         else
