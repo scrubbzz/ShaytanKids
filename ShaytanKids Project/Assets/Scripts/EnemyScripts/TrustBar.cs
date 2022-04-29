@@ -69,7 +69,7 @@ public class TrustBar : MonoBehaviour
             killKid = true;
            
             //DecreaseTrust(meterValues.meterChangeAmount);
-            Destroy(this.gameObject, 1f);
+            Destroy(this.gameObject, 0.1f);
             Debug.Log("Greed =" + meterValues.currentGreed);
 
         }

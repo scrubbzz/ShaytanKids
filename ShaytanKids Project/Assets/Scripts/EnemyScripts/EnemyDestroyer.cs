@@ -41,7 +41,7 @@ public class EnemyDestroyer : MonoBehaviour
                     enemySpawner.enemies.RemoveAt(i);
                     enemySpawner.spawnCount--;
                     enemyDied = true;
-                    timer = 0.5f;
+                    timer = 0.1f;
 
 
                 }
