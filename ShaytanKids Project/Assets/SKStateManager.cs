@@ -6,26 +6,25 @@ using UnityEngine;
 public class SKStateManager : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public bool mustPatrol, mustTurn;
     public float distToPlayer;
-    public float range;
-    public float shotDelay;
-    public bool notShooting;
+    public float attackRange;
+    public float detecRange;
+    public bool mustPatrol, mustTurn;
+    public int enemyRadius;
+    public float stabDelay;
+    public bool notStabbing;
     public float walkspeed;
     public Vector3 playerDirection;
     SKState currentState;
     public Transform groundcheckpos;
     public LayerMask groundLayer;
+    public PlayerHealth playerHealth;
     public Collider2D bodycollider;
     public ShaytanPatrollingState skPatrollingState;
-    // public ChasingState chasingState;
+    public ShaytanChasingState skChasingState;
     public ShaytanAttackingState skAttackingState;
     public GameObject player;
-    public GameObject Grenade;
-    public PlayerHealth playerHealth;
-    public float grenadeSpeed;
     public GameObject shaytankid;
-    public int enemyRadius;
 
 
 
@@ -39,14 +38,20 @@ public class SKStateManager : MonoBehaviour
     }
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         /*Grenade = GameObject.FindGameObjectWithTag("Projectile");*/
         shaytankid = GameObject.FindGameObjectWithTag("ShaytanKid");
         player = GameObject.FindGameObjectWithTag("Player");
+        playerHealth = player.GetComponent<PlayerHealth>();
+
+
+
         enemyRadius = 4;
 
         skPatrollingState = new ShaytanPatrollingState();
-        skAttackingState = new ShaytanAttackingState(shotDelay, this);
-        notShooting = true;
+        skChasingState = new ShaytanChasingState();
+        skAttackingState = new ShaytanAttackingState(stabDelay, this);
+        notStabbing = true;
         mustPatrol = true;
         currentState = skPatrollingState;
     }
@@ -69,16 +74,15 @@ public class SKStateManager : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.magenta;
         Gizmos.DrawWireSphere(transform.position, enemyRadius);
 
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, detecRange);
+
     }
 
-    public GameObject Spawnbullet(SKStateManager sKStateManager)
-    {
-        GameObject thebullet = Instantiate(sKStateManager.Grenade, (Vector2)sKStateManager.transform.position + skAttackingState.directionToPlayer.normalized, Quaternion.identity);
-        return thebullet;
-    }
+
     private void FixedUpdate()
     {
         if (mustPatrol)
@@ -87,14 +91,6 @@ public class SKStateManager : MonoBehaviour
         }
     }
 
-
-    /* public GameObject SpawnBullet(BizzaroStateManager attackingState)
-     {
-
-         GameObject bullet = Instantiate(Grenade, transform.position + offset , Quaternion.identity);
-         return bullet;
-     }
- */
 }
 
 
@@ -124,10 +120,10 @@ public class ShaytanPatrollingState : SKState
         Debug.Log("you are patrolling");
 
 
-        if (skStateManager.distToPlayer <= skStateManager.range)
+        if (skStateManager.distToPlayer <= skStateManager.detecRange)
         {
-            skStateManager.ChangeState(skStateManager.skAttackingState);
-            Debug.Log("you are attacking now");
+            skStateManager.ChangeState(skStateManager.skChasingState);
+            Debug.Log("you are chasing now");
 
 
         }
@@ -137,45 +133,74 @@ public class ShaytanPatrollingState : SKState
 
     public void Flip(SKStateManager sKStateManager)
     {
-
         sKStateManager.transform.localScale = new Vector2(sKStateManager.transform.localScale.x * -1, sKStateManager.transform.localScale.y);
         sKStateManager.walkspeed *= -1;
+    }
 
+}
+
+public class ShaytanChasingState : SKState
+{
+    public override void UpdateState(SKStateManager skStateManager)
+    {
+        skStateManager.anim.SetBool("moving", true);
+
+        if (skStateManager.player.transform.position.x > skStateManager.transform.position.x && skStateManager.transform.localScale.x < 0 || skStateManager.player.transform.position.x < skStateManager.transform.position.x && skStateManager.transform.localScale.x > 0)
+        {
+
+            skStateManager.skPatrollingState.Flip(skStateManager);
+        }
+
+        //if (skStateManager.transform.position != skStateManager.player.transform.position)
+        //{ 
+        //skStateManager.rb.velocity = Vector3.MoveTowards(skStateManager.transform.position, skStateManager.player.transform.position, (skStateManager.walkspeed * 2) * Time.deltaTime);
+        //}
+
+
+        skStateManager.mustPatrol = false;
+        skStateManager.notStabbing = false;
+
+
+        if (skStateManager.distToPlayer <= skStateManager.attackRange)
+        {
+
+            skStateManager.ChangeState(skStateManager.skAttackingState);
+        }
+
+
+        if (skStateManager.distToPlayer >= skStateManager.detecRange)
+        {
+            skStateManager.notStabbing = true;
+            skStateManager.mustPatrol = true;
+            skStateManager.ChangeState(skStateManager.skPatrollingState);
+            Debug.Log("back to patrolling");
+        }
     }
 
 }
 
 
-
 public class ShaytanAttackingState : SKState
 {
-    public float shotTimer;
+    public float meleeTimer;
     public Vector2 directionToPlayer;
 
     public ShaytanAttackingState(float shotDelay, SKStateManager sKStateManager)
     {
-        sKStateManager.shotDelay = shotDelay;
+        sKStateManager.stabDelay = shotDelay;
+
     }
     public override void UpdateState(SKStateManager sKStateManager)
     {
-
-        if (sKStateManager.player.transform.position.x > sKStateManager.transform.position.x && sKStateManager.transform.localScale.x < 0 || sKStateManager.player.transform.position.x < sKStateManager.transform.position.x && sKStateManager.transform.localScale.x > 0)
-        {
-            sKStateManager.skPatrollingState.Flip(sKStateManager);
-        }
-
-        sKStateManager.mustPatrol = false;
         sKStateManager.anim.SetBool("moving", false);
         sKStateManager.rb.velocity = Vector2.zero;
-        sKStateManager.notShooting = false;
-        DamageWarrior(sKStateManager);
-        //  BizzaroMelee(bizzaroStateManager);
-        shotTimer += Time.deltaTime;
-        Debug.Log("YOU ARE SHOOTING");
+        DamageTarget(sKStateManager);
+        meleeTimer += Time.deltaTime;
+        Debug.Log("YOU ARE Hitting");
 
-        if (sKStateManager.distToPlayer >= sKStateManager.range)
+        if (sKStateManager.distToPlayer >= sKStateManager.detecRange)
         {
-            sKStateManager.notShooting = true;
+            sKStateManager.notStabbing = true;
             sKStateManager.mustPatrol = true;
             sKStateManager.ChangeState(sKStateManager.skPatrollingState);
             Debug.Log("back to patrolling");
@@ -183,94 +208,109 @@ public class ShaytanAttackingState : SKState
 
         }
 
-
-
-
-
-
-
-
+        if (sKStateManager.distToPlayer >= sKStateManager.attackRange && sKStateManager.distToPlayer <= sKStateManager.detecRange)
+        {
+            sKStateManager.ChangeState(sKStateManager.skChasingState);
+            Debug.Log("back to Chasing");
+        }
     }
 
-    /*public void BizzaroMelee(BizzaroStateManager bizzaroStateManager)
+
+    public void DamageTarget(SKStateManager sKStateManager)
     {
-        if(Vector2.Distance(bizzaroStateManager.bizzaro.transform.position, bizzaroStateManager.player.transform.position) <= bizzaroStateManager.enemyRadius)
+        if (sKStateManager.player != null)
         {
-        bizzaroStateManager.anim.SetTrigger("mace");
-            bizzaroStateManager.playerHealth.TakeDamage(20);
-            
+
+            directionToPlayer = sKStateManager.player.transform.position - sKStateManager.transform.position;
         }
+
+        if (Vector2.Distance(sKStateManager.shaytankid.transform.position, sKStateManager.player.transform.position) <= sKStateManager.enemyRadius)
+        {
+            if (meleeTimer > 2)
+            {
+                sKStateManager.anim.SetTrigger("meleeAttack");
+                sKStateManager.playerHealth.TakeDamage(10);
+                sKStateManager.playerHealth.tookDamage = true;
+                sKStateManager.playerHealth.currentHealthRegenTimer = sKStateManager.playerHealth.healthRegenTimer;
+                meleeTimer = 0;
+            }
+
+        }
+
 
 
     }
-*/
-
-
-    public void DamageWarrior(SKStateManager skStateManager)
-    {
-        if (skStateManager.player != null)
-        {
-
-            directionToPlayer = skStateManager.player.transform.position - skStateManager.transform.position;
-        }
-
-        if (Vector2.Distance(skStateManager.shaytankid.transform.position, skStateManager.player.transform.position) <= skStateManager.enemyRadius)
-        {
-            skStateManager.anim.SetTrigger("meleeAttack");
-            skStateManager.playerHealth.TakeDamage(20);
-
-        }
-
-        if (skStateManager.player != null && shotTimer >= skStateManager.shotDelay)
-        {
-            skStateManager.anim.SetTrigger("meleeAttack");
-            GameObject thebullet = skStateManager.Spawnbullet(skStateManager);
-            Rigidbody2D rb = thebullet.GetComponent<Rigidbody2D>();
-
-
-            Vector2 direction = directionToPlayer * skStateManager.grenadeSpeed;
-            rb.velocity = direction;
-            rb.transform.up = direction;
-
-            shotTimer = 0f;
-
-        }
-
-    }
-
-
-    /*public void DamagePlayer(BizzaroStateManager bizzaroStateManager)
-    {
-        Collider2D PlayerCollider = Physics2D.OverlapCircle(bizzaroStateManager.player.transform.position, bizzaroStateManager.playerRadius);
-        if(PlayerCollider != null && PlayerCollider.gameObject.tag == ("Player"))
-        {
-            var playerHealth = PlayerCollider.GetComponent<PlayerHealth>();
-            playerHealth.TakeDamage(20);
-            bizzaroStateManager.anim.SetTrigger("");
-
-        }
-    }
-        
-*/
-
-    /* public void Shoot(BizzaroStateManager bizzaroStateManager)
-     {
-         bizzaroStateManager.SpawnBullet(bizzaroStateManager);
-         bizzaroStateManager.shotdelay = 2;
-     }
- */
-    /*   public void GrenadeMovement(BizzaroStateManager bizzaroStateManager)
-        {
-           bizzaroStateManager.grenadeRb = bizzaroStateManager.Grenade.GetComponent<Rigidbody2D>();
-           bizzaroStateManager.grenadeRb.AddForce(bizzaroStateManager.playerDirection, ForceMode2D.Impulse); 
-
-
-
-        }*/
-
-
-
 }
+    
+//public class ShaytanAttackingState : SKState
+//{
+//    public float shotTimer;
+//    public Vector2 directionToPlayer;
+
+//    public ShaytanAttackingState(float shotDelay, SKStateManager sKStateManager)
+//    {
+//        sKStateManager.shotDelay = shotDelay;
+//    }
+//    public override void UpdateState(SKStateManager sKStateManager)
+//    {
+
+//        if (sKStateManager.player.transform.position.x > sKStateManager.transform.position.x && sKStateManager.transform.localScale.x < 0 || sKStateManager.player.transform.position.x < sKStateManager.transform.position.x && sKStateManager.transform.localScale.x > 0)
+//        {
+//            sKStateManager.skPatrollingState.Flip(sKStateManager);
+//        }
+
+//        sKStateManager.mustPatrol = false;
+//        sKStateManager.anim.SetBool("moving", false);
+//        sKStateManager.rb.velocity = Vector2.zero;
+//        sKStateManager.notShooting = false;
+//        DamageWarrior(sKStateManager);
+//        //  BizzaroMelee(bizzaroStateManager);
+//        shotTimer += Time.deltaTime;
+//        Debug.Log("YOU ARE SHOOTING");
+
+//        if (sKStateManager.distToPlayer >= sKStateManager.detecRange)
+//        {
+//            sKStateManager.notShooting = true;
+//            sKStateManager.mustPatrol = true;
+//            sKStateManager.ChangeState(sKStateManager.skPatrollingState);
+//            Debug.Log("back to patrolling");
+
+
+//        }
+
+
+
+
+
+
+
+
+//    }
+
+
+
+
+//    public void DamageWarrior(SKStateManager skStateManager)
+//    {
+//        if (skStateManager.player != null)
+//        {
+
+//            directionToPlayer = skStateManager.player.transform.position - skStateManager.transform.position;
+//        }
+
+//        if (Vector2.Distance(skStateManager.shaytankid.transform.position, skStateManager.player.transform.position) <= skStateManager.enemyRadius)
+//        {
+//            skStateManager.anim.SetTrigger("meleeAttack");
+//            skStateManager.playerHealth.TakeDamage(20);
+
+//        }
+
+//    }
+
+
+
+
+//}
 
 
 
