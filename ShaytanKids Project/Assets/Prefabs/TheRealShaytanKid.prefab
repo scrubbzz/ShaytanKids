@@ -155,7 +155,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 2
 --- !u!114 &8609314142461290083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,17 +169,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 8609314142461290082}
+  distToPlayer: 0
+  attackRange: 0
+  detecRange: 0
   mustPatrol: 0
   mustTurn: 0
-  distToPlayer: 0
-  range: 7
+  enemyRadius: 0
+  stabDelay: 0
+  notStabbing: 0
   walkspeed: 7
+  playerDirection: {x: 0, y: 0, z: 0}
   groundcheckpos: {fileID: 8609314142675572420}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  playerHealth: {fileID: 0}
   bodycollider: {fileID: 8609314142461290084}
   player: {fileID: 0}
+  shaytankid: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!1 &8609314142675572423
 GameObject:
   m_ObjectHideFlags: 0
