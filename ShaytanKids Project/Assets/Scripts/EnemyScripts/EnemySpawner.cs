@@ -70,8 +70,9 @@ public class EnemySpawner : MonoBehaviour
             //enemies.Add(Instantiate(bizzaro, bizzaroSpawnLocations[bizzaroSpawnRange].transform.position, Quaternion.identity));
             enemies.Add(Instantiate(shaytanKid, kidSpawnLocations[kidSpawnRange].transform.position, Quaternion.identity));
             //enemies.Add(Instantiate(archangel, archangelSpawnLocations[angelSpawnRange].transform.position, Quaternion.identity));
-            shaytanKids.Add(shaytanKid);
+             
             //archangels.Add(archangel);
+            shaytanKids.Add(shaytanKid);
 
             //Debug.Log("There are " + enemies.Count + "enemies");
             spawnCount++;

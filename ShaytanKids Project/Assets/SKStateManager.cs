@@ -40,8 +40,7 @@ public class SKStateManager : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         shaytankid = GameObject.FindGameObjectWithTag("ShaytanKid");
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerHealth = player.GetComponent<PlayerHealth>();
+
 
 
 
@@ -63,7 +62,6 @@ public class SKStateManager : MonoBehaviour
         currentState.UpdateState(this);
 
 
-
     }
 
 
@@ -79,6 +77,12 @@ public class SKStateManager : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, detecRange);
 
+    }
+
+    private void OnEnable()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerHealth = player.GetComponent<PlayerHealth>();
     }
 
 
