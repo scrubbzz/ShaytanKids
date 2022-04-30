@@ -10656,21 +10656,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1870045579529129578, guid: 6614ddda0cdcca44385499cba9479be8, type: 3}
-      propertyPath: health
-      value: 100
-      objectReference: {fileID: 0}
     - target: {fileID: 2590481121755645388, guid: 6614ddda0cdcca44385499cba9479be8, type: 3}
       propertyPath: m_Name
       value: Real Shaytan
-      objectReference: {fileID: 0}
-    - target: {fileID: 2590481121755645388, guid: 6614ddda0cdcca44385499cba9479be8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2590481121755645389, guid: 6614ddda0cdcca44385499cba9479be8, type: 3}
-      propertyPath: m_Constraints
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2590481121755645391, guid: 6614ddda0cdcca44385499cba9479be8, type: 3}
       propertyPath: m_RootOrder
@@ -10720,16 +10708,7 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 211406372}
-    - target: {fileID: 6861342270511712836, guid: 6614ddda0cdcca44385499cba9479be8, type: 3}
-      propertyPath: detecRange
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 6861342270511712836, guid: 6614ddda0cdcca44385499cba9479be8, type: 3}
-      propertyPath: attackRange
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2927835835742915218, guid: 6614ddda0cdcca44385499cba9479be8, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6614ddda0cdcca44385499cba9479be8, type: 3}
 --- !u!1001 &8715838315910017253
 PrefabInstance:

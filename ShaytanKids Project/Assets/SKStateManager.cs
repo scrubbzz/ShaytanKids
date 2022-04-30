@@ -39,7 +39,6 @@ public class SKStateManager : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        /*Grenade = GameObject.FindGameObjectWithTag("Projectile");*/
         shaytankid = GameObject.FindGameObjectWithTag("ShaytanKid");
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
@@ -226,10 +225,10 @@ public class ShaytanAttackingState : SKState
 
         if (Vector2.Distance(sKStateManager.shaytankid.transform.position, sKStateManager.player.transform.position) <= sKStateManager.enemyRadius)
         {
-            if (meleeTimer > 2)
+            if (meleeTimer > 1)
             {
                 sKStateManager.anim.SetTrigger("meleeAttack");
-                sKStateManager.playerHealth.TakeDamage(10);
+                sKStateManager.playerHealth.TakeDamage(15);
                 sKStateManager.playerHealth.tookDamage = true;
                 sKStateManager.playerHealth.currentHealthRegenTimer = sKStateManager.playerHealth.healthRegenTimer;
                 meleeTimer = 0;

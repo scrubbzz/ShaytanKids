@@ -162,7 +162,6 @@ GameObject:
   - component: {fileID: 1870045579529129578}
   - component: {fileID: 2590481121755645386}
   - component: {fileID: 2927835835742915224}
-  - component: {fileID: 2927835835742915218}
   - component: {fileID: 6861342270511712836}
   m_Layer: 0
   m_Name: Real Shaytan
@@ -290,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15b7b2a1c09dcf74abd040dc1cadd121, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 100
 --- !u!61 &2590481121755645386
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -337,40 +336,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2927835835742915218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2590481121755645388}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c9c690808329d444bbbae4713229b31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 2590481121755645389}
-  mustPatrol: 0
-  mustTurn: 0
-  distToPlayer: 0
-  notShooting: 0
-  range: 7
-  shotDelay: 0.6
-  walkspeed: 200
-  playerDirection: {x: 0, y: 0, z: 0}
-  groundcheckpos: {fileID: 2590481119872285242}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  bodycollider: {fileID: 2590481121755645386}
-  player: {fileID: 4756443154841981623, guid: 4962cda1a66b1e54ea3cd2d376f77c8c, type: 3}
-  Grenade: {fileID: 5740009558131552698, guid: b5944f0ca9cf1dc49a1fedb4f1f74c34, type: 3}
-  grenadeSpeed: 4
-  playerHealth: {fileID: 0}
-  bizzaro: {fileID: 0}
-  offset: {x: 0, y: 3.1, z: 0}
-  enemyRadius: 5
-  anim: {fileID: 2927835835742915224}
 --- !u!114 &6861342270511712836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,25 +349,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 2590481121755645389}
+  distToPlayer: 0
+  attackRange: 3
+  detecRange: 7
   mustPatrol: 0
   mustTurn: 0
-  distToPlayer: 0
-  range: 7
-  shotDelay: 0.6
-  notShooting: 0
+  enemyRadius: 5
+  stabDelay: 0
+  notStabbing: 0
   walkspeed: 200
   playerDirection: {x: 0, y: 0, z: 0}
   groundcheckpos: {fileID: 2590481119872285242}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  playerHealth: {fileID: 0}
   bodycollider: {fileID: 2590481121755645386}
   player: {fileID: 0}
-  Grenade: {fileID: 5740009558131552698, guid: b5944f0ca9cf1dc49a1fedb4f1f74c34, type: 3}
-  playerHealth: {fileID: 0}
-  grenadeSpeed: 0
   shaytankid: {fileID: 0}
-  enemyRadius: 5
   anim: {fileID: 2927835835742915224}
 --- !u!1001 &4199915413081431668
 PrefabInstance:
